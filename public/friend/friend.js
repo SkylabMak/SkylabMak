@@ -14,6 +14,7 @@ var btnClose = document.getElementById("close_popup")
 
 //showfriend
 var screenShow = document.getElementById('screenShow')
+var outbox = document.getElementById('outbox')
 function getallusersAndcreateCard() {
     let url = ("https://skylabmakdb.herokuapp.com/products/")
     fetch(url)
@@ -21,7 +22,7 @@ function getallusersAndcreateCard() {
             return response.json();
         })
         .then((resJson) => {
-            screenShow.innerHTML = "<div id ='refresh' class='buttonRefresh'>รีเฟรช</div>"
+            outbox.innerHTML = ""
             console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson)
             resJson.forEach((resJson) => {
                 //box
@@ -43,7 +44,7 @@ function getallusersAndcreateCard() {
 
                 //mix 
                 box.append(img, textname, textsay, textcontacts)
-                screenShow.prepend(box)
+                outbox.prepend(box)
             })
         })
         .catch(() => {
@@ -53,9 +54,12 @@ function getallusersAndcreateCard() {
 }
 
 //กรอกข้อมูล
-var phone_ID = []
+var phone_ID = 0
+var IDstatus = 0 // 0  = newuser 1 = olduser
 //-from
 var fromEditData = document.getElementById("fromEditData")
+//popup
+var removepopup = document.getElementById('removepopup');
 //-input
 var input_Phone = document.getElementById("input_Phone")
 var nameInput = document.getElementById("input_Name")
@@ -69,6 +73,8 @@ var cancel = document.getElementById("cancel")
 var remove = document.getElementById("remove")
 var leave = document.getElementById("leave")
 var refresh = document.getElementById("refresh")
+var sureremove = document.getElementById('sureremove');
+var notsureremove = document.getElementById('notsureremove');
 
 
 function notfill() {
@@ -89,20 +95,27 @@ function notfillAndSign() {
     sign.style.display = "inline-block";
     leave.style.display = "inline-block";
     screenShow.style.display = "none"
-    phone_ID.shift();
+    phone_ID = 0
+    IDstatus = 0
+    console.log(IDstatus)
+    console.log("phone_ID = 0")
 }
 
 function removeuser() {
+    removepopup.style.display = "none";
+    console.log("คำสัง ลบทำงาน")
     console.log(phone_ID)
     let url = `
     https://skylabmakdb.herokuapp.com/products/delete/${phone_ID}`
     console.log(url)
-    notfillAndSign();
 
     fetch(url, { method: 'POST', })
         .then((response) => {
             alert('ลบข้อมูลเสร็จสิน');
             console.log(response);
+            IDstatus = 0
+            console.log(IDstatus)
+            notfillAndSign();
         })
         .catch((error) => {
             console.log(error.message)
@@ -110,6 +123,7 @@ function removeuser() {
 }
 
 function newuser() {
+    console.log('function newuser ทำงาน')
     let waitdata = document.getElementById("waitdata");
     waitdata.innerHTML = "กำลังส่งข้อมูล";
     let url = `
@@ -137,7 +151,8 @@ function newuser() {
             waitdata.innerHTML = "ส่งข้อมูลเสร็จสิน";
             alert('ส่งขอมูลเสร็จสิน เบอร์โทร สำหรับยืนยืนตัวตนคือ : ' + json.phonID)
             notfill()
-
+            IDstatus = 1
+            console.log(IDstatus)
         })
         .catch((error) => {
             console.log(error.message)
@@ -187,23 +202,6 @@ function fillNew() {
     input_Phone.value = phone_ID;
 
     senData.addEventListener("click", newuser);
-    cancel.addEventListener("click", notfillAndSign);
-}
-
-function warnremove() {
-    let removepopup = document.getElementById('removepopup');
-    let sureremove = document.getElementById('sureremove');
-    let notsureremove = document.getElementById('notsureremove');
-
-    removepopup.style.display = "block";
-
-    sureremove.addEventListener("click", () => {
-        removeuser();
-        removepopup.style.display = "none";
-    })
-    notsureremove.addEventListener("click", () => {
-        removepopup.style.display = "none";
-    })
 }
 
 async function fillOld() {
@@ -237,13 +235,28 @@ async function fillOld() {
         .catch(() => {
             console.log("ผิดพลาด");
         });
-    cancel.addEventListener("click", notfill)
     senData.addEventListener("click", updateuser)
 }
 
 edit.addEventListener("click", fillOld)
-remove.addEventListener("click", warnremove)
 refresh.addEventListener("click", getallusersAndcreateCard)
+cancel.addEventListener("click", ()=>{
+    console.log(IDstatus)
+    if (IDstatus === 0){
+        notfillAndSign()
+    }
+    else{
+        notfill()
+    }
+})
+//เตือน
+remove.addEventListener("click", ()=>{
+    removepopup.style.display = "block";
+})
+sureremove.addEventListener("click",removeuser)
+notsureremove.addEventListener("click", () => {
+    removepopup.style.display = "none";
+})
 
 
 //check friend---------------------------------------------------
@@ -257,7 +270,7 @@ async function btnpush() {
     //event.preventDefault();
     console.log('buttonpush')
     let IDphon = String(PhoneInput.value)
-    phone_ID.push(IDphon);
+    phone_ID = IDphon;
     console.log('ค่าที่กรอก', IDphon)
     let url = (`https://skylabmakdb.herokuapp.com/products/${IDphon}`)
     console.log('URL', url)
@@ -294,6 +307,8 @@ async function btnpush() {
             if (String(resJson) === "null") {
                 fillNew();
                 closeForm();
+                IDstatus = 0
+                console.log(IDstatus)
                 waitcheck.innerText = ""
             }
             else if (IDphon === "") {
@@ -302,6 +317,8 @@ async function btnpush() {
             else {
                 notfill();
                 closeForm();
+                IDstatus = 1
+                console.log(IDstatus)
                 waitcheck.innerText = ""
             }
             console.log("data = " + resJson)
