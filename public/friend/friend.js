@@ -21,6 +21,7 @@ function getallusersAndcreateCard() {
             return response.json();
         })
         .then((resJson) => {
+            screenShow.innerHTML = "<div id ='refresh' class='buttonRefresh'>รีเฟรช</div>"
             console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson)
             resJson.forEach((resJson) => {
                 //box
@@ -67,6 +68,8 @@ var sign = document.getElementById("sign")
 var cancel = document.getElementById("cancel")
 var remove = document.getElementById("remove")
 var leave = document.getElementById("leave")
+var refresh = document.getElementById("refresh")
+
 
 function notfill() {
     fromEditData.style.display = "none";
@@ -75,6 +78,7 @@ function notfill() {
     remove.style.display = "inline-block";
     screenShow.style.display = "block";
     leave.style.display = "inline-block";
+    getallusersAndcreateCard();
 }
 
 function notfillAndSign() {
@@ -137,6 +141,8 @@ function newuser() {
 }
 
 function updateuser() {
+    let waitdata = document.getElementById("waitdata");
+    waitdata.innerHTML = "กำลังส่งข้อมูล";
     let url = `
     https://skylabmakdb.herokuapp.com/products/edit/${phone_ID}`
 
@@ -159,6 +165,7 @@ function updateuser() {
             return response.json()
         })
         .then((json) => {
+            waitdata.innerHTML = "ส่งข้อมูลเสร็จสิน";
             alert('แก้ไขข้อมูลสำเร็จ เบอร์โทร สำหรับยืนยืนตัวตนคือ : ' + json.phonID)
             notfill()
 
@@ -230,6 +237,7 @@ async function fillOld() {
 
 edit.addEventListener("click", fillOld)
 remove.addEventListener("click", warnremove)
+refresh.addEventListener("click", getallusersAndcreateCard)
 
 
 //check friend---------------------------------------------------
@@ -287,7 +295,6 @@ async function btnpush() {
             }
             else {
                 notfill();
-                getallusersAndcreateCard();
                 closeForm();
                 waitcheck.innerText = ""
             }

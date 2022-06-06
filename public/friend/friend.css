@@ -35,9 +35,10 @@ html, body{
     margin: 20px 
 }
 .screenShow{
+    position: relative;
     max-width: 1300px;
     text-align: center;
-    min-height: 10px;
+    min-height: 50px;
     height: auto;
     margin: auto;
     background-color: #EFC7F9;
@@ -58,4 +59,24 @@ html, body{
     margin: 10px;
     max-width:100px;
     border-radius:15px;
+}
+.buttonRefresh{
+    padding: 5px;
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    border-radius:5px;
+    border: none;
+    cursor: pointer;
+    background-color: #EFEFEF;
+    color: black;
+}
+.white_content{
+    color: black;
+    position: relative;
+    border: none;
+    background-color:white;
+    border-radius:5px;
+    padding: 5px;
+    margin: 5px;
 }
