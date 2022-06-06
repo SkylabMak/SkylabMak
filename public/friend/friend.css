@@ -1,0 +1,61 @@
+html, body{
+    background-color:#F9E5FF;
+    margin:0;
+    padding:0;
+    font-family: 'Kanit', sans-serif;
+    font-size:100%
+}
+.supermain_box{
+    min-height: 500px;
+}
+.main_boxfriend1{
+    max-width: 1000px;
+    margin: auto;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.main_boxfriend2{
+    margin: auto;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.leaveLeft{
+    padding : auto;
+}
+
+.nondisplay{
+    display:none;
+}
+.boxTop{
+    max-width: 1000px;
+    margin: auto;
+    border-radius:15px;
+    margin: 20px 
+}
+.screenShow{
+    max-width: 1300px;
+    text-align: center;
+    min-height: 10px;
+    height: auto;
+    margin: auto;
+    background-color: #EFC7F9;
+    border-radius:15px;
+    padding: 10px;
+}
+.card{
+    display: inline-block;
+    width: 200px;
+    height: auto;
+    background-color: #ffbede;
+    border-radius:15px;
+    margin: 10px;
+    text-align: center;
+    padding: 10px;
+}
+.personimg{
+    margin: 10px;
+    max-width:100px;
+    border-radius:15px;
+}

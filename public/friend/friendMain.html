@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SkylabMak</title>
+    <!CSS>
+        <link type="text/css" rel="stylesheet" href="../main/styleindex.css">
+        <link type="text/css" rel="stylesheet" href="friend.css">
+        <!font Chakra Petch,Kanit>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link
+                href="https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Kanit:wght@200&family=Prompt:wght@300&display=swap"
+                rel="stylesheet">
+            <!viewport meta>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <header class="Tophead">
+        <!header>
+            <a class="Bigtitle" href="http://localhost:1000">
+                SkylabMak
+            </a>
+            <a class="btnTophead" href="https://sites.google.com/a/srt.ac.th/phir-sant-sxm-kaew/home"
+                rel="noopener noreferrer" target="_blank">
+                my old website
+            </a>
+            <a class="btnTophead" href="https://sites.google.com/a/srt.ac.th/phir-sant-sxm-kaew/prawati-swn-taw"
+                rel="noopener noreferrer" target="_blank">
+                my profile
+            </a>
+    </header>
+    <div class="TrickTophead">
+        <!TrickTophead>
+            <a class="Bigtitle" href="#">
+                SkylabMak
+            </a>
+            <a class="btnTophead" href="https://sites.google.com/a/srt.ac.th/phir-sant-sxm-kaew/home"
+                rel="noopener noreferrer" target="_blank">
+                my old website
+            </a>
+            <a class="btnTophead" href="https://sites.google.com/a/srt.ac.th/phir-sant-sxm-kaew/prawati-swn-taw"
+                rel="noopener noreferrer" target="_blank">
+                my profile
+            </a>
+    </div>
+    <div class="supermain_box">
+            <div id="fill in" class="main_boxfriend1" >
+                <!ส่วนกรอกข้อมูล>
+                    <div class="BOXcontent boxTop">
+                        <div class="center_Incontent nondisplay" id="fromEditData">
+                            <!แก้ไข /ส่ง>
+                                <div class="inpopup Vertical_LineR">
+                                    <form>
+                                        <p>
+                                            <label class="text150" for="input_Phone">เบอร์โทร :</label>
+                                            <input id="input_Phone" type="name" name="phone"
+                                                placeholder="ใส่เบอร์ของคุณ">
+                                        </p>
+                                        <p>
+                                            <label class="text150" for="input_Name">ชื่อ :</label>
+                                            <input id="input_Name" type="name" name="name" placeholder="ใส่ชื่อของคุณ">
+                                        </p>
+                                        <p>
+                                            <label class="text150" for="input_say">ทักทาย :</label>
+                                            <textarea id="input_say" name="say" placeholder="กล่าวคำทักทาย"
+                                                rows="2"></textarea>
+                                        </p>
+                                        <p>
+                                            <label class="text150" for="input_contact">ติดต่อ :</label>
+                                            <textarea id="input_contact" name="contact"
+                                                placeholder="เบอร์/อีเมล/ที่อยู่" rows="2"></textarea>
+                                        </p>
+                                        <div class="center_Incontent">
+                                            <button type="button" id="sendData" class="btnmini"> ส่งข้อมูล</button>
+                                            <button type="button" id="cancel" class="btnmini"> ยกเลิก</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="inpopup note">
+                                    <span class="text150">คำอธิบาย <br></span>
+                                    <span class="text100">
+                                        เบอร์ : เบอร์นี้ จะใช้สำหรับยื่นยันตัวตนเท่านั้น จะไม่แสดงสู่สาธารณะ<br>
+                                        ชื่อ : ใส่ชื่อ ที่คิดว่าทุกคนรู้จัก (ไม่จำเป็นต้อง ชื่อจริง)<br>
+                                        ทักทาย : กล่าวคำทักทาน หรือ บอกกล่าว<br>
+                                        ติดต่อ : ใส่ข้อมูล ที่ เพื่อนสามารถติดต่อหาเรา ตามความพอใจของตน<br>
+                                    </span>
+                                    <p>
+                                    <div class="black_content">
+                                        <span id="waitdata" class="textinblack">-</span>
+                                    </div>
+                                    </p>
+                                </div>
+                        </div>
+                        <div class="center_Incontent">
+                            <a id="sign" class="btnEven">
+                                ลงชื่อ
+                            </a>
+                            <a id="Edit" class="btnEven nondisplay">
+                                แก้ไขข้อมูล
+                            </a>
+                            <a id="remove" class="btnEven nondisplay">
+                                ลบข้อมูล
+                            </a>
+                            <a id="leave" class="btnEven" href="http://localhost:1000">
+                                ออก
+                            </a>
+                        </div>
+                        <div class="popup showdow" id="formOF">
+                            <!popupPhone>
+                                <div class="inpopup">
+                                    <form>
+                                        <p>
+                                            <label class="text150" for="popup_name">เบอร์โทร :</label>
+                                            <input id="popup_phone" type="phone" name="phone"
+                                                placeholder="ใส่เบอร์ของคุณ">
+                                        </p>
+                                        <div class="center_Incontent">
+                                            <button type="button" id="next_page" class="btnmini"> ส่งข้อมูล</button>
+                                            <button type="button" id="close_popup" class="btnmini"> ปิดฟอร์ม</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="inpopup note Vertical_LineL">
+                                    <span class="text150">คำอธิบาย <br></span>
+                                    <span class="text100">เบอร์โทรนี้ใช้สำหรับอ้างอิงตัวบุคคล
+                                        <br>การกรอก เช่น 0645688156<br>
+                                        <span id="sue">-</span>
+                                    </span>
+                                </div>
+                                <div class="black_content">
+                                    <span id="waitcheck" class="textinblack"></span>
+                                </div>
+                        </div>
+                        <div class="popup showdow" id="removepopup">
+                            <p class="text150"> คุณต้องการ ลบจริงหรือไม่ </p>
+                            <div class="center_Incontent">
+                                <button type="button" id="sureremove" class="btnmini"> ลบข้อมูล</button>
+                                <button type="button" id="notsureremove" class="btnmini"> ยกเลิก</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div id="screenShow" class="screenShow nondisplay">
+            </div>
+    </div>
+    <footer class="footer">
+        <script type="module" src="friend.js"></script>
+        <p>
+            thank you
+        </p>
+    </footer>
+</body>

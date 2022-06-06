@@ -1,0 +1,256 @@
+html, body{
+    background-color:#F9E5FF;
+    margin:0;
+    padding:0;
+    font-family: 'Kanit', sans-serif;
+    font-size:100%
+}
+input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+textarea{
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+textarea:focus{
+    outline:1px solid rgb(0, 0, 0);;
+    background-color: #E5FFFF;
+}
+input:focus{
+    outline:1px solid rgb(0, 0, 0);;
+    background-color: #E5FFFF;
+}
+.showdow{
+    box-shadow: 4px 3px 9px 5px rgba(0, 0, 0, 0.1);
+}
+
+.Tophead{
+    background-color: #572C86;
+    padding: 10px;
+    margin:0;
+    margin-bottom: 10px;
+    border-radius: 0px 0px 20px 20px;
+    position:fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 99;
+}
+.TrickTophead{
+    background-color: #572C86;
+    padding: 10px;
+    margin:0;
+    margin-bottom: 10px;
+    border-radius: 0px 0px 20px 20px;
+}
+.Bigtitle{
+    text-align: center;
+    font-size: 200%;
+    text-decoration:none;
+    color: white;
+    margin: 10px;
+    display: inline-block;
+    font-family: 'Chakra Petch', sans-serif;
+}
+.btnTophead{
+    text-align:center;
+    color:white;
+    background-color:#7F43B2;
+    border-radius:10px;
+    padding: 10px;
+    text-decoration:none;
+    font-size: 110%;
+    display: inline-block;
+    width: 20%;
+    margin: 10px;
+    box-shadow: 4px 3px 9px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s ease-out, background-color 0.25s ease-out;
+}
+.btnTophead:hover{
+    background-color: #935bc4;
+    transform: scale(1.05,1.05);
+}
+.btnEven{
+    text-align:center;
+    color:black;
+    background-color:#ffbede;
+    border-radius:10px;
+    padding: 10px;
+    text-decoration:none;
+    display: inline-block;
+    width: 20%;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.25s ease-out;
+}
+.btnEven:hover{
+    background-color: #ffd2e7;
+}
+.buttonImg{
+    display: inline-block;
+    margin: 5px;
+    transition: transform 0.25s ease-out;
+}
+.buttonImg:hover{
+    transform: scale(1.05,1.05);
+}
+.btnmini{
+    border-radius:10px;
+    background-color: #F2B7D4;
+    padding: 8px;
+    margin: 10px;
+    text-decoration:none;
+    border: none;
+    cursor: pointer;
+}
+@media screen and (min-width:500px) {
+    .Tophead{
+        padding: 0;
+    }
+    .Bigtitle{
+        font-size: 130%;}
+    .btnTophead{
+        font-size: 70%;
+        padding: 5px;
+        border-radius:5px;
+        width: auto;
+        padding: 3px;}
+}
+@media screen and (min-width:650px) {
+    .Tophead{
+        padding: 5px;
+    }
+    .Bigtitle{
+        font-size: 180%;}
+    .btnTophead{
+        font-size: 100%;
+        padding: 5px;
+        border-radius:5px;
+        width: auto;
+        padding: 3px;}
+}
+@media screen and (min-width:810px) {
+    .Tophead{
+        padding: 10px;
+    }
+    .Bigtitle{
+        font-size: 200%;}
+    .btnTophead{
+        font-size: 110%;
+        padding: 10px;
+        border-radius:10px;
+        width: 20%;
+        padding: 10px;}
+}
+.bander{
+    background-color:#382368;
+    width: 100%;
+    height: 100px;
+    margin-top: 0%;
+}
+.bigimg{
+    width: 100%;
+}
+.main_box{
+    max-width: 900px;
+    margin: auto;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    min-height: 250px;
+}
+.center_Incontent{
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+}
+.titleSn{
+    font-size: 200%;
+    text-decoration:none;
+    color:#ffffff;
+    display: block;
+    font-weight: bold;
+}
+.BOXcontent{
+    margin: 20px 0 30px 0;
+
+    border-radius:15px;
+    background-color: #C7A0DA;
+    padding : 10px 20px 10px 20px;
+    box-shadow: 4px 3px 9px 5px rgba(0, 0, 0, 0.05);
+}
+
+.image{
+    width:100%;
+    border-radius:10px;
+    margin-bottom: none;
+}
+.popup {
+    display: none;
+    position: fixed;
+    max-width:40%;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    background-color: #F9E5FE;
+    border-radius: 5px;
+    padding: 10px;
+}
+.inpopup{
+    vertical-align: top;
+    display: inline-block;
+
+}
+.Vertical_LineL{
+    border-left: 2px solid rgb(0, 0, 0);
+    height: auto;
+    margin: 10px;
+    padding-left:10px ;
+}
+.Vertical_LineR{
+    border-right:  2px solid rgb(0, 0, 0);
+    height: auto;
+    margin: 10px;
+    padding-right: 10px;
+}
+.text200{
+    font-size:200%
+}
+.text150{
+    font-size:150%
+}
+.text100{
+    font-size:100%
+}
+.note {
+    vertical-align: top;
+    text-align: left;
+}
+.black_content{
+    height: auto;
+    border-radius:5px;
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    padding-left: 30px;
+}
+.footer{
+    background-color: #E0CEE4;
+    padding: 10px;
+    text-align:center;
+    margin-top:10px;
+    margin-bottom: 0px;
+}
