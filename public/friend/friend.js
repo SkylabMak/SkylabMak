@@ -78,6 +78,7 @@ function notfill() {
     remove.style.display = "inline-block";
     screenShow.style.display = "block";
     leave.style.display = "inline-block";
+    screenShow.style.display = "block";
     getallusersAndcreateCard();
 }
 
@@ -87,13 +88,16 @@ function notfillAndSign() {
     remove.style.display = "none";
     sign.style.display = "inline-block";
     leave.style.display = "inline-block";
+    screenShow.style.display = "none"
     phone_ID.shift();
 }
 
 function removeuser() {
-    notfillAndSign();
+    console.log(phone_ID)
     let url = `
     https://skylabmakdb.herokuapp.com/products/delete/${phone_ID}`
+    console.log(url)
+    notfillAndSign();
 
     fetch(url, { method: 'POST', })
         .then((response) => {
@@ -179,6 +183,7 @@ function fillNew() {
     fromEditData.style.display = "block";
     sign.style.display = "none";
     leave.style.display = "none";
+    screenShow.style.display = "none"
     input_Phone.value = phone_ID;
 
     senData.addEventListener("click", newuser);
@@ -211,6 +216,7 @@ async function fillOld() {
 
     waitdata.innerHTML = "กำลังคืนค่าข้อมูล";
 
+    console.log(phone_ID)
     input_Phone.value = phone_ID;
 
     let url = (`https://skylabmakdb.herokuapp.com/products/${phone_ID}`)
