@@ -113,45 +113,7 @@ input:focus{
     border: none;
     cursor: pointer;
 }
-@media screen and (min-width:500px) {
-    .Tophead{
-        padding: 0;
-    }
-    .Bigtitle{
-        font-size: 130%;}
-    .btnTophead{
-        font-size: 70%;
-        padding: 5px;
-        border-radius:5px;
-        width: auto;
-        padding: 3px;}
-}
-@media screen and (min-width:650px) {
-    .Tophead{
-        padding: 5px;
-    }
-    .Bigtitle{
-        font-size: 180%;}
-    .btnTophead{
-        font-size: 100%;
-        padding: 5px;
-        border-radius:5px;
-        width: auto;
-        padding: 3px;}
-}
-@media screen and (min-width:810px) {
-    .Tophead{
-        padding: 10px;
-    }
-    .Bigtitle{
-        font-size: 200%;}
-    .btnTophead{
-        font-size: 110%;
-        padding: 10px;
-        border-radius:10px;
-        width: 20%;
-        padding: 10px;}
-}
+
 .bander{
     background-color:#382368;
     width: 100%;
@@ -165,8 +127,7 @@ input:focus{
     max-width: 900px;
     margin: auto;
     height: auto;
-    padding-top: 5px;
-    padding-bottom: 10px;
+    padding: 5px 10px 10px 10px;
     min-height: 250px;
 }
 .center_Incontent{
@@ -198,7 +159,7 @@ input:focus{
 .popup {
     display: none;
     position: fixed;
-    max-width:40%;
+    max-width:80%;
     top: 50%;
     left: 50%;
     transform-origin: center;
@@ -246,6 +207,48 @@ input:focus{
     color: white;
     padding: 10px;
     padding-left: 30px;
+}
+@media screen and (min-width:300px) {
+    .Tophead{
+        padding: 0;
+    }
+    .Bigtitle{
+        font-size: 130%;}
+    .btnTophead{
+        font-size: 70%;
+        padding: 5px;
+        border-radius:5px;
+        width: auto;
+        padding: 3px;}
+}
+@media screen and (min-width:400px) {
+    .Tophead{
+        padding: 5px;
+    }
+    .Bigtitle{
+        font-size: 180%;}
+    .btnTophead{
+        font-size: 100%;
+        padding: 5px;
+        border-radius:5px;
+        width: auto;
+        padding: 3px;}
+}
+@media screen and (min-width:1000px) {
+    .Tophead{
+        padding: 10px;
+    }
+    .Bigtitle{
+        font-size: 200%;}
+    .btnTophead{
+        font-size: 110%;
+        padding: 10px;
+        border-radius:10px;
+        width: 20%;
+        padding: 10px;}
+}
+.nondisplay{
+    display:none;
 }
 .footer{
     background-color: #E0CEE4;
