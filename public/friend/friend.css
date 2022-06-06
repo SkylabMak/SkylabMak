@@ -46,6 +46,7 @@ html, body{
     padding: 10px;
 }
 .card{
+    vertical-align: middle;
     display: inline-block;
     width: 200px;
     height: auto;
