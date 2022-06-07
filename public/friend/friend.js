@@ -126,8 +126,8 @@ function newuser() {
     console.log('function newuser ทำงาน')
     let waitdata = document.getElementById("waitdata");
     waitdata.innerHTML = "กำลังส่งข้อมูล";
-    let url = `
-    https://skylabmakdb.herokuapp.com/products/insert`
+    let url = 
+    `https://skylabmakdb.herokuapp.com/products/insert`
 
     let user = {
         "phonID": input_Phone.value,
@@ -195,6 +195,7 @@ function updateuser() {
 }
 
 function fillNew() {
+    document.getElementById("waitdata").innerHTML = "-"
     fromEditData.style.display = "block";
     sign.style.display = "none";
     leave.style.display = "none";
@@ -271,6 +272,7 @@ async function btnpush() {
     console.log('buttonpush')
     let IDphon = String(PhoneInput.value)
     phone_ID = IDphon;
+    PhoneInput.value = 0
     console.log('ค่าที่กรอก', IDphon)
     let url = (`https://skylabmakdb.herokuapp.com/products/${IDphon}`)
     console.log('URL', url)
@@ -329,18 +331,42 @@ async function btnpush() {
 
 }
 function tentext() {
-    if (PhoneInput.value.length > 10 || PhoneInput.value.length < 10) {
+    console.log('tentext ทำงาน')
+    console.log(input_Phone.value)
+    //https://regex101.com/r/bwn9mp/1
+    let waitdata = document.getElementById("waitdata");
+    let validatePhone = /^(0[0-9]{1})+([0-9]{8})+$/g;
+    console.log(validatePhone.test(PhoneInput.value));
+    console.log(validatePhone.test(input_Phone.value));
+    if (validatePhone.test(PhoneInput.value)||
+        validatePhone.test(input_Phone.value)) {
         document.getElementById("popup_phone")
-            .style.borderBottom = "2px solid red";
+            .style.borderBottom = "2px solid green";
+            console.log("หลังอีฟทำงาน")
+        document.getElementById("input_Phone")
+            .style.borderBottom = "2px solid green";
+        waitdata.innerHTML = "-"
+        btnCheck.disabled = false;
+        senData.disabled = false;
+        
+        //PhoneInput.value.length > 10 || PhoneInput.value.length < 10
     }
     else {
         document.getElementById("popup_phone")
-            .style.borderBottom = "2px solid black";
+            .style.borderBottom = "2px solid red";
+        document.getElementById("input_Phone")
+            .style.borderBottom = "2px solid red";
+            waitdata.innerHTML = "กรุณากรอก เบอร์โทร ให้ถูกต้อง"
+        btnCheck.disabled = true;
+        senData.disabled = true;
     }
 }
 
+//chek phone
 btnCheck.addEventListener("click", btnpush)
 PhoneInput.addEventListener("input", tentext)
+//input phone
+input_Phone.addEventListener("input", tentext)
 
 
 //https://medium.com/neverrest/cors-%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%81%E0%B9%89%E0%B9%84%E0%B8%82%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%AB%E0%B8%B2-cors-%E0%B8%97%E0%B8%B5%E0%B9%88-web-developer-%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%88%E0%B8%AD-5afb6a9e742f

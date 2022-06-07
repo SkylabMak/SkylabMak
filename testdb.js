@@ -1,2 +1,3 @@
-var x =[]
-console.log(x[0])
+if (false || true){
+    console.log("hi")
+}
