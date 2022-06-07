@@ -328,7 +328,7 @@ async function btnpush() {
 function tentext() {
     //https://regex101.com/r/bwn9mp/1
     let waitdata = document.getElementById("waitdata");
-    let validatePhone = /^(0[0-9]{1})+([0-9]{8})+$/g;
+    let validatePhone = /^(0[689]{1})+([0-9]{8})+$/g;
     if (validatePhone.test(PhoneInput.value)||
         validatePhone.test(input_Phone.value)) {
         document.getElementById("popup_phone")
