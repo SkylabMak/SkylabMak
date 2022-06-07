@@ -98,7 +98,6 @@ function notfillAndSign() {
     phone_ID = 0
     IDstatus = 0
     console.log(IDstatus)
-    console.log("phone_ID = 0")
 }
 
 function removeuser() {
@@ -107,14 +106,14 @@ function removeuser() {
     console.log(phone_ID)
     let url = `
     https://skylabmakdb.herokuapp.com/products/delete/${phone_ID}`
-    console.log(url)
+    //console.log(url)
 
     fetch(url, { method: 'POST', })
         .then((response) => {
             alert('ลบข้อมูลเสร็จสิน');
             console.log(response);
             IDstatus = 0
-            console.log(IDstatus)
+            //console.log(IDstatus)
             notfillAndSign();
         })
         .catch((error) => {
@@ -123,7 +122,6 @@ function removeuser() {
 }
 
 function newuser() {
-    console.log('function newuser ทำงาน')
     let waitdata = document.getElementById("waitdata");
     waitdata.innerHTML = "กำลังส่งข้อมูล";
     let url = 
@@ -242,7 +240,7 @@ async function fillOld() {
 edit.addEventListener("click", fillOld)
 refresh.addEventListener("click", getallusersAndcreateCard)
 cancel.addEventListener("click", ()=>{
-    console.log(IDstatus)
+    //console.log(IDstatus)
     if (IDstatus === 0){
         notfillAndSign()
     }
@@ -269,13 +267,12 @@ var waitcheck = document.getElementById("waitcheck")
 
 async function btnpush() {
     //event.preventDefault();
-    console.log('buttonpush')
     let IDphon = String(PhoneInput.value)
     phone_ID = IDphon;
     PhoneInput.value = 0
     console.log('ค่าที่กรอก', IDphon)
     let url = (`https://skylabmakdb.herokuapp.com/products/${IDphon}`)
-    console.log('URL', url)
+    //console.log('URL', url)
     waitcheck.innerText = "กำลังติดต่อเซิร์ฟเวอร์"
     if (IDphon === "") {
         var timeID01 = 0
@@ -310,7 +307,6 @@ async function btnpush() {
                 fillNew();
                 closeForm();
                 IDstatus = 0
-                console.log(IDstatus)
                 waitcheck.innerText = ""
             }
             else if (IDphon === "") {
@@ -320,7 +316,6 @@ async function btnpush() {
                 notfill();
                 closeForm();
                 IDstatus = 1
-                console.log(IDstatus)
                 waitcheck.innerText = ""
             }
             console.log("data = " + resJson)
@@ -331,18 +326,13 @@ async function btnpush() {
 
 }
 function tentext() {
-    console.log('tentext ทำงาน')
-    console.log(input_Phone.value)
     //https://regex101.com/r/bwn9mp/1
     let waitdata = document.getElementById("waitdata");
     let validatePhone = /^(0[0-9]{1})+([0-9]{8})+$/g;
-    console.log(validatePhone.test(PhoneInput.value));
-    console.log(validatePhone.test(input_Phone.value));
     if (validatePhone.test(PhoneInput.value)||
         validatePhone.test(input_Phone.value)) {
         document.getElementById("popup_phone")
             .style.borderBottom = "2px solid green";
-            console.log("หลังอีฟทำงาน")
         document.getElementById("input_Phone")
             .style.borderBottom = "2px solid green";
         waitdata.innerHTML = "-"
