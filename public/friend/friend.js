@@ -114,6 +114,7 @@ function removeuser() {
             console.log(response);
             IDstatus = 0
             //console.log(IDstatus)
+            document.getElementById("popup_phone").value = ""
             notfillAndSign();
         })
         .catch((error) => {
@@ -198,7 +199,12 @@ function fillNew() {
     sign.style.display = "none";
     leave.style.display = "none";
     screenShow.style.display = "none"
+    //value
     input_Phone.value = phone_ID;
+    nameInput.value = "";
+    sayInput.value = "";
+    contactInput.value = "";
+
 
     senData.addEventListener("click", newuser);
 }
@@ -269,7 +275,6 @@ async function btnpush() {
     //event.preventDefault();
     let IDphon = String(PhoneInput.value)
     phone_ID = IDphon;
-    PhoneInput.value = 0
     console.log('ค่าที่กรอก', IDphon)
     let url = (`https://skylabmakdb.herokuapp.com/products/${IDphon}`)
     //console.log('URL', url)
@@ -315,6 +320,7 @@ async function btnpush() {
             else {
                 notfill();
                 closeForm();
+                PhoneInput.value = ""
                 IDstatus = 1
                 waitcheck.innerText = ""
             }
