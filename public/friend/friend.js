@@ -1,3 +1,9 @@
+//prepare api
+fetch("https://skylab-api-img.herokuapp.com/")
+    .then((response) => { console.log(response) })
+fetch("https://skylabmakdb.herokuapp.com/")
+    .then((response) => { console.log(response) })
+
 function openForm() {
     document.getElementById("formOF").style.display = "block";
 }
@@ -32,7 +38,12 @@ function getallusersAndcreateCard() {
                 //img
                 let img = document.createElement('img');
                 img.classList.add('personimg');
-                img.src = "../pic/personicon.png";
+                if (resJson.avatar === "") {
+                    img.src = "https://res.cloudinary.com/dsovxvqzi/image/upload/v1655085605/testuploadimg/personicon_fcyarv.png";
+                }
+                else {
+                    img.src = resJson.avatar
+                }
 
                 //text
                 let textname = document.createElement('span');
@@ -56,6 +67,8 @@ function getallusersAndcreateCard() {
 //กรอกข้อมูล
 var phone_ID = 0
 var IDstatus = 0 // 0  = newuser 1 = olduser
+var urlIMG = ""
+var uploadImg = ""
 //-from
 var fromEditData = document.getElementById("fromEditData")
 //popup
@@ -75,7 +88,11 @@ var leave = document.getElementById("leave")
 var refresh = document.getElementById("refresh")
 var sureremove = document.getElementById('sureremove');
 var notsureremove = document.getElementById('notsureremove');
-
+//imgInput
+var btn = document.getElementById('btn')
+var imgInput = document.getElementById('imgUpload')
+var showimg = document.getElementById('showimg')
+var tagnameimg = document.getElementById('nameimg')
 
 function notfill() {
     fromEditData.style.display = "none";
@@ -102,7 +119,6 @@ function notfillAndSign() {
 
 function removeuser() {
     removepopup.style.display = "none";
-    console.log("คำสัง ลบทำงาน")
     console.log(phone_ID)
     let url = `
     https://skylabmakdb.herokuapp.com/products/delete/${phone_ID}`
@@ -123,14 +139,15 @@ function removeuser() {
 }
 
 function newuser() {
+    console.log(urlIMG)
     let waitdata = document.getElementById("waitdata");
     waitdata.innerHTML = "กำลังส่งข้อมูล";
-    let url = 
-    `https://skylabmakdb.herokuapp.com/products/insert`
+    let url =
+        `https://skylabmakdb.herokuapp.com/products/insert`
 
     let user = {
         "phonID": input_Phone.value,
-        "avatar": "",
+        "avatar": urlIMG,
         "name": nameInput.value,
         "say": sayInput.value,
         "contact": contactInput.value
@@ -159,6 +176,7 @@ function newuser() {
 }
 
 function updateuser() {
+    console.log(urlIMG)
     let waitdata = document.getElementById("waitdata");
     waitdata.innerHTML = "กำลังส่งข้อมูล";
     let url = `
@@ -166,7 +184,7 @@ function updateuser() {
 
     let user = {
         "phonID": input_Phone.value,
-        "avatar": "",
+        "avatar": urlIMG,
         "name": nameInput.value,
         "say": sayInput.value,
         "contact": contactInput.value
@@ -193,6 +211,51 @@ function updateuser() {
         })
 }
 
+function preview() {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+        uploadImg = reader.result;
+        showimg.style.backgroundImage = `url(${uploadImg})`;
+    })
+    reader.readAsDataURL(this.files[0]);
+    //let nameimg = imgInput.files[0].name;
+    //tagnameimg.textContent = nameimg;
+}
+
+async function createURLimg() {
+    const formData = new FormData()
+    formData.append('image', imgInput.files[0])
+
+    if (String(imgInput.files[0]) === "undefined") {
+        return urlIMG = "https://res.cloudinary.com/dsovxvqzi/image/upload/v1655085605/testuploadimg/personicon_fcyarv.png";
+    }
+    else {
+        //console.log(imgInput.files)
+        console.log(imgInput.files[0])
+        await fetch(`https://skylab-api-img.herokuapp.com/uploadIMG/${phone_ID}`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => { return response.json() })
+            .then(data => {
+                console.log(data.url)
+                urlIMG = data.url
+            })
+            .then(()=>{{
+                if(IDstatus === 0){
+                    newuser();
+                }
+                else{
+                    updateuser();
+                }
+            }})
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+}
+
 function fillNew() {
     document.getElementById("waitdata").innerHTML = "-"
     fromEditData.style.display = "block";
@@ -206,7 +269,7 @@ function fillNew() {
     contactInput.value = "";
 
 
-    senData.addEventListener("click", newuser);
+    senData.addEventListener("click", createURLimg)
 }
 
 async function fillOld() {
@@ -240,25 +303,29 @@ async function fillOld() {
         .catch(() => {
             console.log("ผิดพลาด");
         });
-    senData.addEventListener("click", updateuser)
+
+    senData.addEventListener("click", createURLimg)
+    //run next function in this function
 }
+
+imgInput.addEventListener('change', preview)
 
 edit.addEventListener("click", fillOld)
 refresh.addEventListener("click", getallusersAndcreateCard)
-cancel.addEventListener("click", ()=>{
+cancel.addEventListener("click", () => {
     //console.log(IDstatus)
-    if (IDstatus === 0){
+    if (IDstatus === 0) {
         notfillAndSign()
     }
-    else{
+    else {
         notfill()
     }
 })
 //เตือน
-remove.addEventListener("click", ()=>{
+remove.addEventListener("click", () => {
     removepopup.style.display = "block";
 })
-sureremove.addEventListener("click",removeuser)
+sureremove.addEventListener("click", removeuser)
 notsureremove.addEventListener("click", () => {
     removepopup.style.display = "none";
 })
@@ -335,7 +402,7 @@ function tentext() {
     //https://regex101.com/r/bwn9mp/1
     let waitdata = document.getElementById("waitdata");
     let validatePhone = /^(0[689]{1})+([0-9]{8})+$/g;
-    if (validatePhone.test(PhoneInput.value)||
+    if (validatePhone.test(PhoneInput.value) ||
         validatePhone.test(input_Phone.value)) {
         document.getElementById("popup_phone")
             .style.borderBottom = "2px solid green";
@@ -344,7 +411,7 @@ function tentext() {
         waitdata.innerHTML = "-"
         btnCheck.disabled = false;
         senData.disabled = false;
-        
+
         //PhoneInput.value.length > 10 || PhoneInput.value.length < 10
     }
     else {
@@ -352,7 +419,7 @@ function tentext() {
             .style.borderBottom = "2px solid red";
         document.getElementById("input_Phone")
             .style.borderBottom = "2px solid red";
-            waitdata.innerHTML = "กรุณากรอก เบอร์โทร ให้ถูกต้อง"
+        waitdata.innerHTML = "กรุณากรอก เบอร์โทร ให้ถูกต้อง"
         btnCheck.disabled = true;
         senData.disabled = true;
     }

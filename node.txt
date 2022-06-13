@@ -1,5 +1,4 @@
 ฟอนต์เหลียม
 https://fonts.google.com/specimen/Chakra+Petch?subset=thai
 non-JS module files deprecated.
-phonID: หาไม่เจอ แก้ไม่เสร็จ หาวิธีกรอก แบบฟริก
-เซฟหายรอบ
+https://medium.com/@olamilekan001/image-upload-with-google-cloud-storage-and-node-js-a1cf9baa1876
