@@ -23,6 +23,9 @@ input#imgUpload + label {
     border-radius: 8px;
     cursor: pointer;
 }
+.imgUpload{
+    background-color:#8A72ED;
+}
 textarea{
     padding: 12px 20px;
     margin: 8px 0;

@@ -89,7 +89,6 @@ var refresh = document.getElementById("refresh")
 var sureremove = document.getElementById('sureremove');
 var notsureremove = document.getElementById('notsureremove');
 //imgInput
-var btn = document.getElementById('btn')
 var imgInput = document.getElementById('imgUpload')
 var showimg = document.getElementById('showimg')
 var tagnameimg = document.getElementById('nameimg')
@@ -153,6 +152,7 @@ function newuser() {
         "contact": contactInput.value
     }
 
+    console.log(user)
     fetch(url, {
         method: 'POST',
         headers: {
@@ -164,6 +164,7 @@ function newuser() {
             return response.json()
         })
         .then((json) => {
+            console.log(json)
             waitdata.innerHTML = "ส่งข้อมูลเสร็จสิน";
             alert('ส่งขอมูลเสร็จสิน เบอร์โทร สำหรับยืนยืนตัวตนคือ : ' + json.phonID)
             notfill()
@@ -223,6 +224,8 @@ function preview() {
 }
 
 async function createURLimg() {
+    let waitdata = document.getElementById("waitdata");
+    waitdata.innerHTML = "กำลังส่งรูปภาพ";
     const formData = new FormData()
     formData.append('image', imgInput.files[0])
 
@@ -241,14 +244,16 @@ async function createURLimg() {
                 console.log(data.url)
                 urlIMG = data.url
             })
-            .then(()=>{{
-                if(IDstatus === 0){
-                    newuser();
+            .then(() => {
+                {
+                    if (IDstatus === 0) {
+                        newuser();
+                    }
+                    else {
+                        updateuser();
+                    }
                 }
-                else{
-                    updateuser();
-                }
-            }})
+            })
             .catch(error => {
                 console.error(error)
             })
@@ -267,6 +272,7 @@ function fillNew() {
     nameInput.value = "";
     sayInput.value = "";
     contactInput.value = "";
+    console.log(IDstatus);
 
 
     senData.addEventListener("click", createURLimg)
@@ -280,6 +286,13 @@ async function fillOld() {
     remove.style.display = "none";
     leave.style.display = "none"
 
+    //block
+    imgInput.disabled = true;
+    input_Phone.disabled = true;
+    nameInput.disabled = true;
+    sayInput.disabled = true;
+    contactInput.disabled = true;
+
     waitdata.innerHTML = "กำลังคืนค่าข้อมูล";
 
     console.log(phone_ID)
@@ -291,18 +304,26 @@ async function fillOld() {
             return response.json();
         })
         .then((resJson) => {
-
-            showimg.style.backgroundImage = resJson.avatar;
+            showimg.style.backgroundImage = `url(${resJson.avatar})`;
             console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson);
             nameInput.value = resJson.name;
             sayInput.value = resJson.say;
             contactInput.value = resJson.contact;
 
             console.log("data = " + resJson)
+
+            //unblock
+            imgInput.disabled = false;
+            input_Phone.disabled = false;
+            nameInput.disabled = false;
+            sayInput.disabled = false;
+            contactInput.disabled = false;
+
             waitdata.innerHTML = 'คืนค่าข้อมูลเสร็จสิน'
         })
         .catch(() => {
-            console.log("ผิดพลาด");
+            console.dir(error)
+            waitdata.innerHTML = 'เกิดข้อผิดพลาด'
         });
 
     senData.addEventListener("click", createURLimg)
@@ -310,7 +331,6 @@ async function fillOld() {
 }
 
 imgInput.addEventListener('change', preview)
-
 edit.addEventListener("click", fillOld)
 refresh.addEventListener("click", getallusersAndcreateCard)
 cancel.addEventListener("click", () => {
