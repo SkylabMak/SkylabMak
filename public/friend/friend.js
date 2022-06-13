@@ -230,7 +230,13 @@ async function createURLimg() {
     formData.append('image', imgInput.files[0])
 
     if (String(imgInput.files[0]) === "undefined") {
-        return urlIMG = "https://res.cloudinary.com/dsovxvqzi/image/upload/v1655085605/testuploadimg/personicon_fcyarv.png";
+        if (IDstatus === 0) {
+            urlIMG = "https://res.cloudinary.com/dsovxvqzi/image/upload/v1655085605/testuploadimg/personicon_fcyarv.png";
+            newuser();
+        }
+        else {
+            updateuser();
+        }
     }
     else {
         //console.log(imgInput.files)
@@ -304,13 +310,14 @@ async function fillOld() {
             return response.json();
         })
         .then((resJson) => {
+            urlIMG = resJson.avatar
             showimg.style.backgroundImage = `url(${resJson.avatar})`;
             console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson);
             nameInput.value = resJson.name;
             sayInput.value = resJson.say;
             contactInput.value = resJson.contact;
 
-            console.log("data = " + resJson)
+            //console.log("data = " + resJson)
 
             //unblock
             imgInput.disabled = false;
