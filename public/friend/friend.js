@@ -292,6 +292,7 @@ async function fillOld() {
         })
         .then((resJson) => {
 
+            showimg.style.backgroundImage = resJson.avatar;
             console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson);
             nameInput.value = resJson.name;
             sayInput.value = resJson.say;
