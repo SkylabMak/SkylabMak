@@ -1,10 +1,12 @@
-html, body{
-    background-color:#F9E5FF;
-    margin:0;
-    padding:0;
+html,
+body {
+    background-color: #F9E5FF;
+    margin: 0;
+    padding: 0;
     font-family: 'Kanit', sans-serif;
-    font-size:100%
+    font-size: 100%
 }
+
 input {
     padding: 12px 20px;
     margin: 8px 0;
@@ -13,17 +15,20 @@ input {
     border-radius: 10px;
     border-bottom: 2px solid rgb(0, 0, 0);
 }
-input#imgUpload{
+
+input#imgUpload {
     display: none;
 }
-input#imgUpload + label {
-    background-color:#8A72ED;
+
+input#imgUpload+label {
+    background-color: #8A72ED;
     padding: 10px;
     color: white;
     border-radius: 8px;
     cursor: pointer;
 }
-textarea{
+
+textarea {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -31,53 +36,85 @@ textarea{
     border-radius: 10px;
     border-bottom: 2px solid rgb(0, 0, 0);
 }
-textarea:focus{
-    outline:1px solid rgb(0, 0, 0);;
+
+textarea:focus {
+    outline: 1px solid rgb(0, 0, 0);
+    ;
     background-color: #E5FFFF;
 }
-input:focus{
-    outline:1px solid rgb(0, 0, 0);;
+
+input:focus {
+    outline: 1px solid rgb(0, 0, 0);
+    ;
     background-color: #E5FFFF;
 }
-.showdow{
+
+.showdow {
     box-shadow: 4px 3px 9px 5px rgba(0, 0, 0, 0.1);
 }
 
-.Tophead{
+.imgloder {
+    display:none;
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top:50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+    z-index: 99;
+    animation: spin 5000ms infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.Tophead {
     background-color: #572C86;
     padding: 10px;
-    margin:0;
+    margin: 0;
     margin-bottom: 10px;
     border-radius: 0px 0px 20px 20px;
-    position:fixed;
+    position: fixed;
     left: 0;
     top: 0;
     right: 0;
-    z-index: 99;
+    z-index: 80;
 }
-.TrickTophead{
+
+.TrickTophead {
     background-color: #572C86;
     padding: 10px;
-    margin:0;
+    margin: 0;
     margin-bottom: 10px;
     border-radius: 0px 0px 20px 20px;
 }
-.Bigtitle{
+
+.Bigtitle {
     text-align: center;
     font-size: 200%;
-    text-decoration:none;
+    text-decoration: none;
     color: white;
     margin: 10px;
     display: inline-block;
     font-family: 'Chakra Petch', sans-serif;
 }
-.btnTophead{
-    text-align:center;
-    color:white;
-    background-color:#7F43B2;
-    border-radius:10px;
+
+.btnTophead {
+    text-align: center;
+    color: white;
+    background-color: #7F43B2;
+    border-radius: 10px;
     padding: 10px;
-    text-decoration:none;
+    text-decoration: none;
     font-size: 110%;
     display: inline-block;
     width: 20%;
@@ -85,17 +122,19 @@ input:focus{
     box-shadow: 4px 3px 9px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.25s ease-out, background-color 0.25s ease-out;
 }
-.btnTophead:hover{
+
+.btnTophead:hover {
     background-color: #935bc4;
-    transform: scale(1.05,1.05);
+    transform: scale(1.05, 1.05);
 }
-.btnEven{
-    text-align:center;
-    color:black;
-    background-color:#ffbede;
-    border-radius:10px;
+
+.btnEven {
+    text-align: center;
+    color: black;
+    background-color: #ffbede;
+    border-radius: 10px;
     padding: 10px;
-    text-decoration:none;
+    text-decoration: none;
     display: inline-block;
     width: 20%;
     margin: 10px;
@@ -103,73 +142,83 @@ input:focus{
     border: none;
     transition: background-color 0.25s ease-out;
 }
-.btnEven:hover{
+
+.btnEven:hover {
     background-color: #ffd2e7;
 }
-.buttonImg{
+
+.buttonImg {
     display: inline-block;
     margin: 5px;
     transition: transform 0.25s ease-out;
 }
-.buttonImg:hover{
-    transform: scale(1.05,1.05);
+
+.buttonImg:hover {
+    transform: scale(1.05, 1.05);
 }
-.btnmini{
-    border-radius:10px;
+
+.btnmini {
+    border-radius: 10px;
     background-color: #F2B7D4;
     padding: 8px;
     margin: 10px;
-    text-decoration:none;
+    text-decoration: none;
     border: none;
     cursor: pointer;
 }
 
-.bander{
-    background-color:#382368;
+.bander {
+    background-color: #382368;
     width: 100%;
     height: 100px;
     margin-top: 0%;
 }
-.bigimg{
+
+.bigimg {
     width: 100%;
 }
-.main_box{
+
+.main_box {
     max-width: 900px;
     margin: auto;
     height: auto;
     padding: 5px 10px 10px 10px;
     min-height: 250px;
 }
-.center_Incontent{
+
+.center_Incontent {
     max-width: 100%;
     margin: auto;
     text-align: center;
 }
-.titleSn{
+
+.titleSn {
     font-size: 200%;
-    text-decoration:none;
-    color:#ffffff;
+    text-decoration: none;
+    color: #ffffff;
     display: block;
     font-weight: bold;
 }
-.BOXcontent{
+
+.BOXcontent {
     margin: 20px 0 30px 0;
 
-    border-radius:15px;
+    border-radius: 15px;
     background-color: #C7A0DA;
-    padding : 10px 20px 10px 20px;
+    padding: 10px 20px 10px 20px;
     box-shadow: 4px 3px 9px 5px rgba(0, 0, 0, 0.05);
 }
 
-.image{
-    width:100%;
-    border-radius:10px;
+.image {
+    width: 100%;
+    border-radius: 10px;
     margin-bottom: none;
 }
+
 .popup {
     display: none;
     position: fixed;
-    max-width:80%;
+    max-width: 80%;
     top: 50%;
     left: 50%;
     transform-origin: center;
@@ -180,90 +229,115 @@ input:focus{
     border-radius: 5px;
     padding: 10px;
 }
-.inpopup{
+
+.inpopup {
     vertical-align: top;
     display: inline-block;
 
 }
-.Vertical_LineL{
+
+.Vertical_LineL {
     border-left: 2px solid rgb(0, 0, 0);
     height: auto;
     margin: 10px;
-    padding-left:10px ;
+    padding-left: 10px;
 }
-.Vertical_LineR{
-    border-right:  2px solid rgb(0, 0, 0);
+
+.Vertical_LineR {
+    border-right: 2px solid rgb(0, 0, 0);
     height: auto;
     margin: 10px;
     padding-right: 10px;
 }
-.text200{
-    font-size:200%
+
+.text200 {
+    font-size: 200%
 }
-.text150{
-    font-size:150%
+
+.text150 {
+    font-size: 150%
 }
-.text100{
-    font-size:100%
+
+.text100 {
+    font-size: 100%
 }
+
 .note {
     vertical-align: top;
     text-align: left;
 }
-.black_content{
+
+.black_content {
     height: auto;
-    border-radius:5px;
+    border-radius: 5px;
     background-color: #000000;
     color: white;
     padding: 10px;
     padding-left: 30px;
 }
+
 @media screen and (min-width:300px) {
-    .Tophead{
+    .Tophead {
         padding: 0;
     }
-    .Bigtitle{
-        font-size: 130%;}
-    .btnTophead{
+
+    .Bigtitle {
+        font-size: 130%;
+    }
+
+    .btnTophead {
         font-size: 70%;
         padding: 5px;
-        border-radius:5px;
+        border-radius: 5px;
         width: auto;
-        padding: 3px;}
+        padding: 3px;
+    }
 }
+
 @media screen and (min-width:400px) {
-    .Tophead{
+    .Tophead {
         padding: 5px;
     }
-    .Bigtitle{
-        font-size: 180%;}
-    .btnTophead{
+
+    .Bigtitle {
+        font-size: 180%;
+    }
+
+    .btnTophead {
         font-size: 100%;
         padding: 5px;
-        border-radius:5px;
+        border-radius: 5px;
         width: auto;
-        padding: 3px;}
+        padding: 3px;
+    }
 }
+
 @media screen and (min-width:1000px) {
-    .Tophead{
+    .Tophead {
         padding: 10px;
     }
-    .Bigtitle{
-        font-size: 200%;}
-    .btnTophead{
+
+    .Bigtitle {
+        font-size: 200%;
+    }
+
+    .btnTophead {
         font-size: 110%;
         padding: 10px;
-        border-radius:10px;
+        border-radius: 10px;
         width: 20%;
-        padding: 10px;}
+        padding: 10px;
+    }
 }
-.nondisplay{
-    display:none;
+
+.nondisplay {
+    display: none;
 }
-.footer{
+
+.footer {
     background-color: #E0CEE4;
     padding: 10px;
-    text-align:center;
-    margin-top:10px;
+    text-align: center;
+    margin-top: 10px;
     margin-bottom: 0px;
 }

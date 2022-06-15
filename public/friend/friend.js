@@ -22,6 +22,7 @@ var btnClose = document.getElementById("close_popup")
 var screenShow = document.getElementById('screenShow')
 var outbox = document.getElementById('outbox')
 function getallusersAndcreateCard() {
+    imgload.style.display = "block"
     let url = ("https://skylabmakdb.herokuapp.com/products/")
     fetch(url)
         .then((response) => {
@@ -57,9 +58,10 @@ function getallusersAndcreateCard() {
                 box.append(img, textname, textsay, textcontacts)
                 outbox.prepend(box)
             })
+            imgload.style.display = "none"
         })
         .catch(() => {
-            console.log("ผิดพลาด");
+            console.dir(error);
         });
 
 }
@@ -92,6 +94,8 @@ var notsureremove = document.getElementById('notsureremove');
 var imgInput = document.getElementById('imgUpload')
 var showimg = document.getElementById('showimg')
 var tagnameimg = document.getElementById('nameimg')
+//load
+var imgload = document.getElementById('imgloder')
 
 function notfill() {
     fromEditData.style.display = "none";
@@ -170,6 +174,7 @@ function newuser() {
             notfill()
             IDstatus = 1
             console.log(IDstatus)
+            imgload.style.display = "none"
         })
         .catch((error) => {
             console.log(error.message)
@@ -205,7 +210,7 @@ function updateuser() {
             waitdata.innerHTML = "ส่งข้อมูลเสร็จสิน";
             alert('แก้ไขข้อมูลสำเร็จ เบอร์โทร สำหรับยืนยืนตัวตนคือ : ' + json.phonID)
             notfill()
-
+            imgload.style.display = "none"
         })
         .catch((error) => {
             console.log(error.message)
@@ -224,6 +229,7 @@ function preview() {
 }
 
 async function createURLimg() {
+    imgload.style.display = "block"
     let waitdata = document.getElementById("waitdata");
     waitdata.innerHTML = "กำลังส่งรูปภาพ";
     const formData = new FormData()
@@ -285,6 +291,7 @@ function fillNew() {
 }
 
 async function fillOld() {
+    imgload.style.display = "block"
     let waitdata = document.getElementById("waitdata");
     fromEditData.style.display = "block";
     sign.style.display = "none";
@@ -327,6 +334,7 @@ async function fillOld() {
             contactInput.disabled = false;
 
             waitdata.innerHTML = 'คืนค่าข้อมูลเสร็จสิน'
+            imgload.style.display = "none"
         })
         .catch(() => {
             console.dir(error)
@@ -368,6 +376,7 @@ var waitcheck = document.getElementById("waitcheck")
 
 async function btnpush() {
     //event.preventDefault();
+    imgload.style.display = "block"
     let IDphon = String(PhoneInput.value)
     phone_ID = IDphon;
     console.log('ค่าที่กรอก', IDphon)
@@ -402,6 +411,7 @@ async function btnpush() {
             return response.json();
         })
         .then((resJson) => {
+            imgload.style.display = "none"
             console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson)
             if (String(resJson) === "null") {
                 fillNew();
@@ -422,7 +432,7 @@ async function btnpush() {
             console.log("data = " + resJson)
         })
         .catch(() => {
-            console.log("ผิดพลาด");
+            console.dir(error);
         });
 
 }

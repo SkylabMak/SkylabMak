@@ -14,26 +14,24 @@
                 rel="stylesheet">
             <!viewport meta>
                 <meta name="viewport" content="width=device-width, initial-scale=1">
+                <!load>
+                <script src="jquery-2.1.4.js"></script>
 
 </head>
 <body>
     <div>
-        <form>
-            <span > upload label</span>
-            <p>
-            <input id="imgUpload"  type="file" name="image">
-            <label for="imgUpload"> upload </label>
-        </p>
         <div>
-            <span> file name : </span>
-            <span id="nameimg">-</span>
+            <img id="imgloder" class="imgloder" alt="" src="../pic/loadicon.png">
         </div>
-            <button id="btn" type="button"> send </button>
-        </form>
-    </div>
-    <div id="showimg" class="preview">
     </div>
     <footer>
         <script type="module" src="test.js"></script>
+        <script>
+            (window).on("load",function(){
+                (".imgloder").fadOut("slow")
+            })
+        </script>
     </footer>
 </body>
+<!https://stackoverflow.com/questions/1853662/how-to-show-page-loading-div-until-the-page-has-finished-loading>
+<!https://codepen.io/teerapuch/pen/vLJXeR>
