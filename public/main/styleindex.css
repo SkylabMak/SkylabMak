@@ -13,7 +13,7 @@ input {
     box-sizing: border-box;
     border: none;
     border-radius: 10px;
-    border-bottom: 2px solid rgb(0, 0, 0);
+    border-bottom: 4px solid rgb(0, 0, 0);
 }
 
 input#imgUpload {
@@ -339,9 +339,10 @@ input:focus {
 }
 
 .footer {
-    background-color: #ffffff;
+    color: #989898;
+    border-top: 2px solid #4c3e6b;
+    background-color: #2D133A;
     padding: 10px;
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 0px;
+    margin: 10px 50px 0 50px;
 }

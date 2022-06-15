@@ -446,9 +446,9 @@ function tentext() {
     if (validatePhone.test(PhoneInput.value) ||
         validatePhone.test(input_Phone.value)) {
         document.getElementById("popup_phone")
-            .style.borderBottom = "2px solid green";
+            .style.borderBottom = "4px solid green";
         document.getElementById("input_Phone")
-            .style.borderBottom = "2px solid green";
+            .style.borderBottom = "4px solid green";
         waitdata.innerHTML = "-"
         btnCheck.disabled = false;
         senData.disabled = false;
@@ -457,9 +457,9 @@ function tentext() {
     }
     else {
         document.getElementById("popup_phone")
-            .style.borderBottom = "2px solid red";
+            .style.borderBottom = "4px solid red";
         document.getElementById("input_Phone")
-            .style.borderBottom = "2px solid red";
+            .style.borderBottom = "4px solid red";
         waitdata.innerHTML = "กรุณากรอก เบอร์โทร ให้ถูกต้อง"
         btnCheck.disabled = true;
         senData.disabled = true;
