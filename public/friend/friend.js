@@ -49,10 +49,13 @@ function getallusersAndcreateCard() {
                 //text
                 let textname = document.createElement('span');
                 textname.innerHTML = "<br> ชื่อ : " + resJson.name;
+                textname.classList.add('textwhire');
                 let textsay = document.createElement('span');
                 textsay.innerHTML = "<br> ทักทาย : " + resJson.say;
+                textsay.classList.add('textwhire');
                 let textcontacts = document.createElement('span');
                 textcontacts.innerHTML = "<br> ติดต่อ : " + resJson.contact;
+                textcontacts.classList.add('textwhire');
 
                 //mix 
                 box.append(img, textname, textsay, textcontacts)

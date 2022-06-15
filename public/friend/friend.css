@@ -1,10 +1,3 @@
-html, body{
-    background-color:#F9E5FF;
-    margin:0;
-    padding:0;
-    font-family: 'Kanit', sans-serif;
-    font-size:100%
-}
 .supermain_box{
     min-height: 500px;
 }
@@ -39,7 +32,7 @@ html, body{
     min-height: 50px;
     height: auto;
     margin: auto;
-    background-color: #EFC7F9;
+    background-color: #4E2849;
     border-radius:15px;
     padding: 10px;
 }
@@ -51,7 +44,7 @@ html, body{
     display: inline-block;
     width: 200px;
     height: auto;
-    background-color: #ffbede;
+    background-color: #544E9C;
     border-radius:15px;
     margin: 10px;
     text-align: center;
@@ -67,11 +60,16 @@ html, body{
     position:absolute;
     top: 10px;
     right: 10px;
-    border-radius:5px;
+    border-radius:20px;
     border: none;
     cursor: pointer;
-    background-color: #EFEFEF;
-    color: black;
+    background-color: #AF80F9;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.15s ease-out,
+}
+.buttonRefresh:hover{
+    transform: scale(1.025, 1.025);
 }
 .white_content{
     color: black;
@@ -87,7 +85,7 @@ html, body{
     vertical-align: middle;/*ตรงกลาง*/
     text-align: center;
     color: black;
-    background-color: #ffbede;
+    background-color: #F7EB89;
     border-radius: 10px;
     padding: 10px;
     text-decoration: none;
@@ -96,10 +94,11 @@ html, body{
     margin: 10px;
     cursor: pointer;
     border: none;
-    transition: background-color 0.25s ease-out;
+    transition: transform 0.15s ease-out, background-color 0.25s ease-out;
 }
 .btnTopfriend:hover{
-    background-color: #ffd2e7;
+    background-color: #FAF2B4;
+    transform: scale(1.025, 1.025);
 }
 .preview{
     border-radius: 10px;
