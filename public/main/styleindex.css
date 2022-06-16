@@ -82,7 +82,7 @@ input:focus {
 
 .Tophead {
     background-color: #2D133A;
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
     margin: 0;
     margin-bottom: 10px;
     /*border-radius: 0px 0px 20px 20px;*/
@@ -95,10 +95,10 @@ input:focus {
 
 .TrickTophead {
     background-color: #572C86;
-    padding: 10px;
+    padding: 10px 10px 0 10px;
     margin: 0;
     margin-bottom: 10px;
-    border-radius: 0px 0px 20px 20px;
+    /*-radius: 0px 0px 20px 20px;*/
 }
 
 .Bigtitle {
@@ -218,6 +218,9 @@ input:focus {
     border-radius: 10px;
     margin-bottom: none;
 }
+.border-radius{
+    border-radius: 15px;
+}
 
 .popup {
     display: none;
@@ -253,6 +256,14 @@ input:focus {
     margin: 10px;
     padding-right: 10px;
 }
+.horizontal_LineB {
+    background-color:#4c3e6b;
+    border-radius: 15px;
+    height: 2px;
+    width: auto;
+    margin: 0px 20px 0px 20px;
+    padding-right: 10px;
+}
 
 .text200 {
     font-size: 200%
@@ -284,6 +295,9 @@ input:focus {
     .Tophead {
         padding: 0;
     }
+    .TrickTophead{
+        padding: 0;
+    }
 
     .Bigtitle {
         font-size: 130%;
@@ -300,7 +314,10 @@ input:focus {
 
 @media screen and (min-width:400px) {
     .Tophead {
-        padding: 5px;
+        padding: 5px 5px 0px 5px;
+    }
+    .TrickTophead{
+        padding: 5px 5px 0px 5px;
     }
 
     .Bigtitle {
@@ -318,7 +335,10 @@ input:focus {
 
 @media screen and (min-width:1000px) {
     .Tophead {
-        padding: 10px;
+        padding: 10px 10px 0 10px;
+    }
+    .TrickTophead{
+        padding: 10px 10px 0px 10px;
     }
 
     .Bigtitle {
@@ -346,3 +366,5 @@ input:focus {
     text-align: center;
     margin: 10px 50px 0 50px;
 }
+/*https://love2dev.com/blog/html-website-copyright/*/
+/*https://fontawesome.com/v5/icons/html5?s=brands*/
