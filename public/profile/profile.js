@@ -1,3 +1,4 @@
+document.title = "SM. my profile";
 const age = document.getElementById("age")
 var today = new Date();
 var yeartoday = today.getFullYear();

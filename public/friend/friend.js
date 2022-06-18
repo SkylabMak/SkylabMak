@@ -1,3 +1,4 @@
+document.title = "SM. old friend";
 //prepare api
 fetch("https://skylab-api-img.herokuapp.com/")
     .then((response) => { console.log(response) })

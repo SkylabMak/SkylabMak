@@ -1,3 +1,5 @@
+document.title = "SkylabMak";
+
 /*
 function next_pageFriend() {
     window.open
