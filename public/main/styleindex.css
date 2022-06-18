@@ -137,6 +137,15 @@ input:focus {
     background-color: #FCE995;
     transform: scale(1.05, 1.05);
 }
+.miniloing{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+}
+.smallloing{
+    width: 20px;
+}
 
 .btnEven {
     text-align: center;
@@ -186,6 +195,10 @@ input:focus {
 
 .bigimg {
     width: 100%;
+}
+.miniimg {
+    height: 50px;
+    border-radius:100%;
 }
 
 .main_box {
@@ -276,6 +289,12 @@ input:focus {
 .text100 {
     font-size: 100%
 }
+.nondisplay {
+    display: none;
+}
+.vertical-align-middle {
+    vertical-align: middle;
+}
 
 .note {
     vertical-align: top;
@@ -354,10 +373,57 @@ input:focus {
     }
 }
 
-.nondisplay {
-    display: none;
+.overflowNoti {
+    background-color: #DFCAEE;
+    text-align: justify;
+    width: auto;
+    height: 150px;
+    overflow: auto;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
 }
 
+.boxNoti{
+    display: flex;
+    box-sizing: border-box;
+    vertical-align:middle;
+    margin:5px;
+    padding: 5px;
+    border-bottom: 1px solid rgb(53, 53, 53);
+}
+.Lnoti{
+    display:block;
+    width: 50px;
+}
+.Cnoti{
+    display:block;
+    flex-grow: 1;
+    margin:5px;
+    padding: 5px;
+    text-align: justify;
+    word-wrap: break-word;
+}
+.Rnoti{
+    text-align: justify;
+    display:block;
+    width: 100px;
+    font-size: 75%;
+    color: rgb(122, 122, 122)
+}
+
+.nonesensor{
+    display: inline-block;
+    color:white;
+    background-color:none;
+    border-radius:  20px;
+}
+.sensor{
+    display: inline-block;
+    background-color:black;
+    border-radius:  20px;
+    color:black;
+}
 .footer {
     color: #989898;
     border-top: 2px solid #4c3e6b;

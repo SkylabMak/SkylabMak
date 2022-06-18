@@ -4,6 +4,11 @@ fetch("https://skylab-api-img.herokuapp.com/")
 fetch("https://skylabmakdb.herokuapp.com/")
     .then((response) => { console.log(response) })
 
+//storage
+let saveID = '';
+//localStorage.setItem(saveID, 'Value'); 
+console.log(localStorage.getItem('saveID'));
+
 function openForm() {
     document.getElementById("formOF").style.display = "block";
 }
@@ -70,12 +75,15 @@ function getallusersAndcreateCard() {
 }
 
 //กรอกข้อมูล
+var numIDstates = Math.floor(Math.random() *1000)
 var phone_ID = 0
 var IDstatus = 0 // 0  = newuser 1 = olduser
 var urlIMG = ""
 var uploadImg = ""
 //-from
+var boxPhone = document.getElementById('boxPhone')
 var fromEditData = document.getElementById("fromEditData")
+var showphon = document.getElementById('showphon');
 //popup
 var removepopup = document.getElementById('removepopup');
 //-input
@@ -90,9 +98,11 @@ var sign = document.getElementById("sign")
 var cancel = document.getElementById("cancel")
 var remove = document.getElementById("remove")
 var leave = document.getElementById("leave")
+var signout = document.getElementById("signout")
 var refresh = document.getElementById("refresh")
 var sureremove = document.getElementById('sureremove');
 var notsureremove = document.getElementById('notsureremove');
+var hide = document.getElementById('hide');
 //imgInput
 var imgInput = document.getElementById('imgUpload')
 var showimg = document.getElementById('showimg')
@@ -106,8 +116,11 @@ function notfill() {
     edit.style.display = "inline-block";
     remove.style.display = "inline-block";
     screenShow.style.display = "block";
-    leave.style.display = "inline-block";
+    signout.style.display = "inline-block";
     screenShow.style.display = "block";
+    leave.style.display = "none";
+    boxPhone.style.display = "block";
+    showphon.innerHTML = phone_ID
     getallusersAndcreateCard();
 }
 
@@ -116,8 +129,12 @@ function notfillAndSign() {
     edit.style.display = "none";
     remove.style.display = "none";
     sign.style.display = "inline-block";
+    signout.style.display = "none";
     leave.style.display = "inline-block";
     screenShow.style.display = "none"
+    boxPhone.style.display = "none";
+    localStorage.removeItem('saveID');
+    console.log(localStorage.getItem('saveID'));
     phone_ID = 0
     IDstatus = 0
     console.log(IDstatus)
@@ -132,6 +149,8 @@ function removeuser() {
 
     fetch(url, { method: 'POST', })
         .then((response) => {
+            localStorage.removeItem('saveID');
+            console.log(localStorage.getItem('saveID'));
             alert('ลบข้อมูลเสร็จสิน');
             console.log(response);
             IDstatus = 0
@@ -171,6 +190,7 @@ function newuser() {
             return response.json()
         })
         .then((json) => {
+            localStorage.setItem('saveID', input_Phone.value);
             console.log(json)
             waitdata.innerHTML = "ส่งข้อมูลเสร็จสิน";
             alert('ส่งขอมูลเสร็จสิน เบอร์โทร สำหรับยืนยืนตัวตนคือ : ' + json.phonID)
@@ -210,6 +230,7 @@ function updateuser() {
             return response.json()
         })
         .then((json) => {
+            localStorage.setItem('saveID', input_Phone.value);
             waitdata.innerHTML = "ส่งข้อมูลเสร็จสิน";
             alert('แก้ไขข้อมูลสำเร็จ เบอร์โทร สำหรับยืนยืนตัวตนคือ : ' + json.phonID)
             notfill()
@@ -218,17 +239,6 @@ function updateuser() {
         .catch((error) => {
             console.log(error.message)
         })
-}
-
-function preview() {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => {
-        uploadImg = reader.result;
-        showimg.style.backgroundImage = `url(${uploadImg})`;
-    })
-    reader.readAsDataURL(this.files[0]);
-    //let nameimg = imgInput.files[0].name;
-    //tagnameimg.textContent = nameimg;
 }
 
 async function createURLimg() {
@@ -276,12 +286,25 @@ async function createURLimg() {
 
 }
 
+//fill
+function preview() {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+        uploadImg = reader.result;
+        showimg.style.backgroundImage = `url(${uploadImg})`;
+    })
+    reader.readAsDataURL(this.files[0]);
+    //let nameimg = imgInput.files[0].name;
+    //tagnameimg.textContent = nameimg;
+}
+
 function fillNew() {
     document.getElementById("waitdata").innerHTML = "-"
     fromEditData.style.display = "block";
     sign.style.display = "none";
     leave.style.display = "none";
     screenShow.style.display = "none"
+    signout.style.display = "none";
     //value
     input_Phone.value = phone_ID;
     nameInput.value = "";
@@ -301,6 +324,7 @@ async function fillOld() {
     edit.style.display = "none";
     remove.style.display = "none";
     leave.style.display = "none"
+    signout.style.display = "none";
 
     //block
     imgInput.disabled = true;
@@ -350,6 +374,7 @@ async function fillOld() {
 
 imgInput.addEventListener('change', preview)
 edit.addEventListener("click", fillOld)
+signout.addEventListener("click",notfillAndSign)
 refresh.addEventListener("click", getallusersAndcreateCard)
 cancel.addEventListener("click", () => {
     //console.log(IDstatus)
@@ -417,20 +442,25 @@ async function btnpush() {
             imgload.style.display = "none"
             console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson)
             if (String(resJson) === "null") {
+                //history.pushState({id:numIDstates},"",)
                 fillNew();
                 closeForm();
                 IDstatus = 0
                 waitcheck.innerText = ""
+                
             }
             else if (IDphon === "") {
                 return;
             }
             else {
+                localStorage.setItem('saveID', IDphon); 
+                console.log(localStorage.getItem('saveID'));
                 notfill();
                 closeForm();
                 PhoneInput.value = ""
                 IDstatus = 1
                 waitcheck.innerText = ""
+                
             }
             console.log("data = " + resJson)
         })
@@ -466,11 +496,24 @@ function tentext() {
     }
 }
 
+//first order
+if (String(localStorage.getItem('saveID')) === 'null'){
+    notfillAndSign()
+}
+else{
+    phone_ID = localStorage.getItem('saveID'); 
+    notfill()
+}
+
 //chek phone
 btnCheck.addEventListener("click", btnpush)
 PhoneInput.addEventListener("input", tentext)
 //input phone
 input_Phone.addEventListener("input", tentext)
+//sensor
+hide.addEventListener("click",()=>{
+    showphon.classList.toggle('sensor')
+})
 
 
 //https://medium.com/neverrest/cors-%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%81%E0%B9%89%E0%B9%84%E0%B8%82%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%AB%E0%B8%B2-cors-%E0%B8%97%E0%B8%B5%E0%B9%88-web-developer-%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%88%E0%B8%AD-5afb6a9e742f
