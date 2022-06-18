@@ -376,6 +376,9 @@ imgInput.addEventListener('change', preview)
 edit.addEventListener("click", fillOld)
 signout.addEventListener("click",notfillAndSign)
 refresh.addEventListener("click", getallusersAndcreateCard)
+leave.addEventListener("click",() => {
+    history.back();
+})
 cancel.addEventListener("click", () => {
     //console.log(IDstatus)
     if (IDstatus === 0) {
