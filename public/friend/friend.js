@@ -76,7 +76,7 @@ function getallusersAndcreateCard() {
 }
 
 //กรอกข้อมูล
-var numIDstates = Math.floor(Math.random() *1000)
+var numIDstates = Math.floor(Math.random() * 1000)
 var phone_ID = 0
 var IDstatus = 0 // 0  = newuser 1 = olduser
 var urlIMG = ""
@@ -375,9 +375,9 @@ async function fillOld() {
 
 imgInput.addEventListener('change', preview)
 edit.addEventListener("click", fillOld)
-signout.addEventListener("click",notfillAndSign)
+signout.addEventListener("click", notfillAndSign)
 refresh.addEventListener("click", getallusersAndcreateCard)
-leave.addEventListener("click",() => {
+leave.addEventListener("click", () => {
     history.back();
 })
 cancel.addEventListener("click", () => {
@@ -451,20 +451,20 @@ async function btnpush() {
                 closeForm();
                 IDstatus = 0
                 waitcheck.innerText = ""
-                
+
             }
             else if (IDphon === "") {
                 return;
             }
             else {
-                localStorage.setItem('saveID', IDphon); 
+                localStorage.setItem('saveID', IDphon);
                 console.log(localStorage.getItem('saveID'));
                 notfill();
                 closeForm();
                 PhoneInput.value = ""
                 IDstatus = 1
                 waitcheck.innerText = ""
-                
+
             }
             console.log("data = " + resJson)
         })
@@ -501,12 +501,48 @@ function tentext() {
 }
 
 //first order
-if (String(localStorage.getItem('saveID')) === 'null'){
+if (String(localStorage.getItem('saveID')) === 'null') {
     notfillAndSign()
 }
-else{
-    phone_ID = localStorage.getItem('saveID'); 
-    notfill()
+else {
+    function checksecond() {
+        let url = (`https://skylabmakdb.herokuapp.com/products/${localStorage.getItem('saveID')}`);
+        await fetch(url)
+            .then((response) => {
+                return response.json();
+            })
+            .then((resJson) => {
+                imgload.style.display = "none"
+                console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson)
+                if (String(resJson) === "null") {
+                    //history.pushState({id:numIDstates},"",)
+                    fillNew();
+                    closeForm();
+                    IDstatus = 0
+                    waitcheck.innerText = ""
+
+                }
+                else if (IDphon === "") {
+                    return;
+                }
+                else {
+                    localStorage.setItem('saveID', IDphon);
+                    console.log(localStorage.getItem('saveID'));
+                    phone_ID = localStorage.getItem('saveID');
+                    notfill();
+                    closeForm();
+                    PhoneInput.value = ""
+                    IDstatus = 1
+                    waitcheck.innerText = ""
+
+                }
+                console.log("data = " + resJson)
+            })
+            .catch(() => {
+                console.dir(error);
+            });
+
+    }
 }
 
 //chek phone
@@ -515,7 +551,7 @@ PhoneInput.addEventListener("input", tentext)
 //input phone
 input_Phone.addEventListener("input", tentext)
 //sensor
-hide.addEventListener("click",()=>{
+hide.addEventListener("click", () => {
     showphon.classList.toggle('sensor')
 })
 
