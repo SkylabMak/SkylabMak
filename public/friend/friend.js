@@ -515,7 +515,7 @@ else {
                 imgload.style.display = "none"
                 console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson)
                 if (String(resJson) === "null") {
-                    //history.pushState({id:numIDstates},"",)
+                    localStorage.removeItem('saveID');
                     fillNew();
                     closeForm();
                     IDstatus = 0
