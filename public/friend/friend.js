@@ -505,7 +505,7 @@ if (String(localStorage.getItem('saveID')) === 'null') {
     notfillAndSign()
 }
 else {
-    function checksecond() {
+    async function checksecond() {
         let url = (`https://skylabmakdb.herokuapp.com/products/${localStorage.getItem('saveID')}`);
         await fetch(url)
             .then((response) => {
@@ -521,9 +521,6 @@ else {
                     IDstatus = 0
                     waitcheck.innerText = ""
 
-                }
-                else if (IDphon === "") {
-                    return;
                 }
                 else {
                     localStorage.setItem('saveID', IDphon);
