@@ -1,4 +1,137 @@
-//https://stackoverflow.com/questions/53498453/keep-javascript-changes-when-going-back-and-forward-in-browser
-//https://www.w3schools.com/jsref/met_his_back.asp
-//https://www.w3schools.com/js/js_window_history.asp
-//https://stackoverflow.com/questions/34132502/keeping-js-changes-on-dom-after-refresh
+//hide html
+const hidehtml = document.getElementById("hidehtml")
+//textloading
+const Tl = document.getElementById("textloading")
+var i = 0
+const textL = ["-","\\","/"]
+setInterval(()=>{
+    if (i === 3){
+        i = 0
+    }
+    Tl.innerText = textL[i]
+    i += 1
+}, 100)
+Tl.style.display = "none"
+//login
+const popuplogin = document.getElementById("formlogin")
+const loginPhone = document.getElementById("loginPhone")
+const loginpassword = document.getElementById("loginpw")
+const btnlogin = document.getElementById("login")
+const btnClogin = document.getElementById("Clogin")
+const textcomP = document.getElementById("textcomP")
+
+
+async function btnloginpushed() {
+    Tl.style.display = "inline-block"
+    console.log("start")
+    let url = (`https://skylab-api-login.herokuapp.com/login`)
+    const namephone = loginPhone.value
+    const password = loginpassword.value
+    let user = {
+        "namephone": loginPhone.value,
+        "password": loginpassword.value
+    }
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(user)
+    })
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) => {
+            console.log(json)
+            if(json.success === "true"){
+                hidehtml.style.display = "block"
+                popuplogin.style.display = "none"
+            }
+            else if (json.success === "false"){
+                
+                textcomP.innerText = "รหัสผิด"
+            }
+            else{
+                return
+            }
+            Tl.style.display = "none"
+        })
+        .catch((error) => {
+            console.log("Error. fetch again")
+            shownoty();
+        })
+}
+btnlogin.addEventListener("click",btnloginpushed)
+btnClogin.addEventListener("click",()=>{
+    history.back();
+})
+async function editnoty() {
+
+}
+//noty----------------------------------------------------------------
+const boxnoty = document.getElementById("boxnoty")
+async function shownoty() {
+    let url = "https://skylab-api-login.herokuapp.com/noty"
+    fetch(url)
+        .then((response) => {
+            return response.json();
+        })
+        .then((resJson) => {
+            console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson)
+            var sortdata = [...resJson].sort((data1, data2) => {
+                if (Number(data1.date) > Number(data2.date)) {
+                    return -1 //ซ้ายมาก่อน
+                }
+                else if (Number(data1.date) < Number(data2.date)) {
+                    return 1 //สลับ ขวามาก่อน
+                }
+                else {
+                    return 0
+                }
+        
+            })
+        return sortdata})
+        .then((Groupdatanoty) => {
+            console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", Groupdatanoty)
+            Groupdatanoty.forEach((datanoty) => {
+                //box
+                let mainbox = document.createElement('div')
+                mainbox.classList.add('boxNoti')
+                let boxavatar = document.createElement('div');
+                boxavatar.classList.add('Lnoti');
+                let boxcenter = document.createElement('div');
+                boxcenter.classList.add('Cnoti')
+                let boxdate = document.createElement('div');
+                boxdate.classList.add('Rnoti')
+
+                //img
+                let img = document.createElement('img');
+                img.classList.add('miniimg');
+                img.src = datanoty.pic
+
+                //text
+                let textnoty = document.createElement('span');
+                textnoty.innerText = datanoty.text;
+                //-----
+                let textdate = document.createElement('span');
+                let date = datanoty.date
+                let dateSlice = date.slice(6, 8) + "/" + date.slice(4, 6) + "/" + date.slice(0, 4)
+                textdate.innerHTML = "อัปเดตโดย " + datanoty.name + "<br>" + " เมื่อ " + dateSlice;
+
+
+                //mix 
+                boxavatar.append(img)
+                boxcenter.append(textnoty)
+                boxdate.append(textdate)
+                mainbox.append(boxavatar,boxcenter,boxdate)
+                boxnoty.append(mainbox)
+            })
+        })
+        .catch(() => {
+            console.dir(error);
+        });
+}
+shownoty();
+
+//noty
+//const editnoty = document.getElementById("editnoti")

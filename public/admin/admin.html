@@ -6,6 +6,7 @@
     <title>SkylabMak</title>
     <!CSS>
         <link type="text/css" rel="stylesheet" href="../main/styleindex.css">
+        <link type="text/css" rel="stylesheet" href="admin.css">
         <!font Chakra Petch,Kanit>
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +19,7 @@
 </head>
 
 <body>
-    <div>
+    <div id="hidehtml" class="nondisplay">
         <header class="Tophead">
             <!header>
                 <a class="Bigtitle" href="">
@@ -28,8 +29,7 @@
                     rel="noopener noreferrer" target="_blank">
                     my old website
                 </a>
-                <a class="btnTophead" href="/profile"
-                    rel="noopener noreferrer" target="_blank">
+                <a class="btnTophead" href="/profile" rel="noopener noreferrer" target="_blank">
                     my profile
                 </a>
                 <a class="miniloing">
@@ -47,8 +47,8 @@
                         event
                     </a>
                     <div class="center_Incontent">
-                        <a id="old_friend" class="btnEven" style="color: rgb(0, 0, 0); background-color: #F7EB89" 
-                        href="/friend/">
+                        <a id="old_friend" class="btnEven" style="color: rgb(0, 0, 0); background-color: #F7EB89"
+                            href="/friend/">
                             เพื่อนเก่าแสนคิดถึง
                         </a>
                     </div>
@@ -66,8 +66,8 @@
                             </a>
                         </div>
                         <div class="buttonImg">
-                            <a href="https://www.facebook.com/PraisanSormkaew" aria-label="none" rel="noopener noreferrer"
-                                target="_blank">
+                            <a href="https://www.facebook.com/PraisanSormkaew" aria-label="none"
+                                rel="noopener noreferrer" target="_blank">
                                 <img class="image showdow" src="../pic/Follow/2.png" alt="">
                             </a>
                         </div>
@@ -87,39 +87,39 @@
                     <button id="editnoti" class="btnmini">แก้ไข</button>
                     <div class="center_Incontent">
                         <div class="overflowNoti">
-                            <span class="text150" >ประกาศ <br></span>
-                            <div class="boxNoti">
-                                <div class="Lnoti">
-                                    <img alt="" class="miniimg" src="../pic/Pofile/PicPraisan 02.jpg">
-                                </div>
-                                <div class="Cnoti">
-                                    <span>ณ ขณะนี้ กำลังอยู่ในช่วงทดสอบและพัฒนา</span>
-                                    <span>ณ ขณะนี้ กำลังอยู่ในช่วงทดสอบและพัฒนา</span>
-                                </div>
-                                <div class="Rnoti">
-                                    <span> อัปเดตโดย skylabmak<br> เมื่อ 04/08/90</span>
-                                </div>
-                            </div>
-                            <div class="boxNoti">
-                                <img alt="" class="miniimg" src="../pic/Pofile/PicPraisan 02.jpg">
-                                <div class="textnoti">
-                                    <span>ณ ขณะนี้ กำลังอยู่ในช่วงทดสอบและพัฒนา</span>
-                                    
-                                </div>
-                            </div>
-                            <div class="boxNoti">
-                                <img alt="" class="miniimg" src="../pic/Pofile/PicPraisan 02.jpg">
-                                <div class="textnoti">
-                                    <span>ณ ขณะนี้ กำลังอยู่ในช่วงทดสอบและพัฒนา</span>
-                                </div>
+                            <span class="text150">ประกาศ <br></span>
+                            <div id="boxnoty">
                             </div>
                         </div>
                     </div>
             </div>
         </div>
     </div>
+    <div class="popupFsadmin showdow" id="formlogin">
+        <!popupPhone>
+            <div class="inpopup">
+                <form>
+                    <p>
+                        <label class="text150" for="loginPhone">เบอร์โทร :</label>
+                        <input id="loginPhone" type="number" name="phone">
+                        <br>
+                        <label class="text150" for="loginpw">รหัส :</label>
+                        <input id="loginpw" type="text" name="password">
+                    </p>
+                    <div class="center_Incontent">
+                        <button type="button" id="login" class="btnmini"> ส่งข้อมูล</button>
+                        <button type="button" id="Clogin" class="btnmini"> กลับ</button>
+                    </div>
+                </form>
+                <div class="black_content">
+                    <span id="textloading" class="textloading">-</span>
+                    <span id="textcomP" class="textinblack"></span>
+                </div>
+            </div>
+    </div>
+
     <footer class="footer">
-        <script type="module" src="/main.js"></script>
+        <script type="module" src="admin.js"></script>
         <small>
             &copy; Copyright 2022,SkylabMak All Rights Reserved
         </small>

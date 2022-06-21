@@ -79,6 +79,9 @@ input:focus {
         transform: rotate(360deg);
     }
 }
+.textloading{
+    font-size:200%
+}
 
 .Tophead {
     background-color: #2D133A;

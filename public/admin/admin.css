@@ -1,0 +1,15 @@
+.popupFsadmin {
+    display: block;
+    position: fixed;
+    max-width: 80%;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    background-color: #6d6d6d;
+    color:white;
+    border-radius: 5px;
+    padding: 10px;
+}
