@@ -119,7 +119,7 @@ function notfill() {
     screenShow.style.display = "block";
     signout.style.display = "inline-block";
     screenShow.style.display = "block";
-    leave.style.display = "block";
+    leave.style.display = "inline-block";
     boxPhone.style.display = "block";
     showphon.innerHTML = phone_ID
     getallusersAndcreateCard();
