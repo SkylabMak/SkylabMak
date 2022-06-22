@@ -19,14 +19,14 @@ const loginpassword = document.getElementById("loginpw")
 const btnlogin = document.getElementById("login")
 const btnClogin = document.getElementById("Clogin")
 const textcomP = document.getElementById("textcomP")
-
+//noty
+var imgnoty = ""
+var namenoty = ""
 
 async function btnloginpushed() {
     Tl.style.display = "inline-block"
     console.log("start")
     let url = (`https://skylab-api-login.herokuapp.com/login`)
-    const namephone = loginPhone.value
-    const password = loginpassword.value
     let user = {
         "namephone": loginPhone.value,
         "password": loginpassword.value
@@ -44,6 +44,9 @@ async function btnloginpushed() {
         .then((json) => {
             console.log(json)
             if(json.success === "true"){
+                imgnoty = json.avatar
+                namenoty = json.name
+                console.log(imgnoty)
                 hidehtml.style.display = "block"
                 popuplogin.style.display = "none"
             }
@@ -70,6 +73,13 @@ async function editnoty() {
 }
 //noty----------------------------------------------------------------
 const boxnoty = document.getElementById("boxnoty")
+const popup = document.getElementById("forminsertnoty")
+const textinsertnoty = document.getElementById("insertnoty")
+const btninsertnotyDB = document.getElementById("btninsertnoty")
+const btnCinsertnoty = document.getElementById("btnCinsertnoty")
+const btninsertnoty = document.getElementById("editnoti")
+
+
 async function shownoty() {
     let url = "https://skylab-api-login.herokuapp.com/noty"
     fetch(url)
@@ -132,6 +142,54 @@ async function shownoty() {
         });
 }
 shownoty();
+async function insertnoty(){
+    let textcomP02 = document.getElementById("textcomPIninsertnoty")
+    Tl02.style.display = "inline-block"
+    console.log("start")
+    let url = (`https://skylab-api-login.herokuapp.com/noty/insert`)
+    //date
+    const d = new Date();
+    const date = String(d.getFullYear())
+        + String(("0" + (d.getMonth() + 1)).slice(-2))
+        + String(("0" + d.getDate()).slice(-2));
+    console.log(date);
+    let user = {
+        "date": date,
+        "pic": imgnoty,
+        "name" : namenoty,
+        "text" : textinsertnoty.value
+    }
+    console.log(user)
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(user)
+    })
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) => {
+            console.log(json)
+            textcomP02.innerText = "เสร็จ"
 
+        })
+        .catch((error) => {
+            console.log(err.stack);
+            //console.log("Error. fetch again")
+            //shownoty();
+        })
+}
+btninsertnotyDB.addEventListener('click',insertnoty)
+btninsertnoty.addEventListener("click",()=>{
+    popup.style.display = "block"
+})
+btnCinsertnoty.addEventListener("click",()=>{
+    popup.style.display = "none"
+})
+popup.style.display = "none"
+
+//ณ ขณะนี้ ช่อง"notyfy" ใช้ได้ปกติ และจะแจ้งการ อัปเดต แก้ไข ทางนี้ เป็นหลัก
 //noty
 //const editnoty = document.getElementById("editnoti")
