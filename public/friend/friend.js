@@ -288,15 +288,18 @@ async function createURLimg() {
                         updateuser();
                     }
                 }
+                imgload.style.display = "none"
             })
             .catch(error => {
+                imgload.style.display = "none"
+                let waitdata = document.getElementById("waitdata");
                 waitdata.innerHTML = "เจอปัญหาในการอัปโหลดรูป กำลังลองใหม่";
                 createURLimg();
                 console.error(error)
                 console.log("เจอปัญหาในการอัปโหลดรูป กำลังลองใหม่")
             })
     }
-    imgload.style.display = "none"
+    
 
 }
 
