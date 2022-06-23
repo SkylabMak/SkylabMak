@@ -292,6 +292,14 @@ input:focus {
     margin: 0px 20px 0px 20px;
     padding-right: 10px;
 }
+.horizontal_LineT {
+    background-color:#4c3e6b;
+    border-radius: 15px;
+    height: 1.5px;
+    width: auto;
+    margin: 0px 20px 10px 20px;
+    padding-right: 10px;
+}
 
 .text200 {
     font-size: 200%
@@ -443,11 +451,11 @@ input:focus {
 }
 .footer {
     color: #989898;
-    border-top: 2px solid #4c3e6b;
+    /*border-top: 2px solid #4c3e6b;*/
     background-color: #2D133A;
     padding: 10px;
     text-align: center;
-    margin: 10px 50px 0 50px;
+    margin: 10px 0px 0px 0px;
 }
 .textfooterHead{
     font-size: 150%;
