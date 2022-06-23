@@ -113,7 +113,6 @@ var tagnameimg = document.getElementById('nameimg')
 var imgload = document.getElementById('imgloder')
 
 function notfill() {
-    imgload.style.display = "none"
     fromEditData.style.display = "none";
     sign.style.display = "none";
     edit.style.display = "inline-block";
@@ -201,7 +200,6 @@ function newuser() {
             notfill()
             IDstatus = 1
             console.log(IDstatus)
-            imgload.style.display = "none"
 
         })
         .catch((error) => {
@@ -242,7 +240,6 @@ function updateuser() {
             waitdata.innerHTML = "ส่งข้อมูลเสร็จสิน";
             alert('แก้ไขข้อมูลสำเร็จ เบอร์โทร สำหรับยืนยืนตัวตนคือ : ' + json.phonID)
             notfill()
-            imgload.style.display = "none"
         })
         .catch((error) => {
             waitdata.innerHTML = error.message;
