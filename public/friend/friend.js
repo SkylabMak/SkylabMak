@@ -71,6 +71,7 @@ function getallusersAndcreateCard() {
         })
         .catch(() => {
             console.dir(error);
+            imgload.style.display = "none";
         });
 
 }
@@ -112,6 +113,7 @@ var tagnameimg = document.getElementById('nameimg')
 var imgload = document.getElementById('imgloder')
 
 function notfill() {
+    imgload.style.display = "none"
     fromEditData.style.display = "none";
     sign.style.display = "none";
     edit.style.display = "inline-block";
@@ -165,6 +167,7 @@ function removeuser() {
 }
 
 function newuser() {
+    imgload.style.display = "block"
     console.log(urlIMG)
     let waitdata = document.getElementById("waitdata");
     waitdata.innerHTML = "กำลังส่งข้อมูล";
@@ -199,13 +202,17 @@ function newuser() {
             IDstatus = 1
             console.log(IDstatus)
             imgload.style.display = "none"
+
         })
         .catch((error) => {
             console.log(error.message)
+            waitdata.innerHTML = error.message;
+            imgload.style.display = "none"
         })
 }
 
 function updateuser() {
+    imgload.style.display = "block"
     console.log(urlIMG)
     let waitdata = document.getElementById("waitdata");
     waitdata.innerHTML = "กำลังส่งข้อมูล";
@@ -238,7 +245,9 @@ function updateuser() {
             imgload.style.display = "none"
         })
         .catch((error) => {
+            waitdata.innerHTML = error.message;
             console.log(error.message)
+            imgload.style.display = "none"
         })
 }
 
@@ -281,9 +290,13 @@ async function createURLimg() {
                 }
             })
             .catch(error => {
+                waitdata.innerHTML = "เจอปัญหาในการอัปโหลดรูป กำลังลองใหม่";
+                createURLimg();
                 console.error(error)
+                console.log("เจอปัญหาในการอัปโหลดรูป กำลังลองใหม่")
             })
     }
+    imgload.style.display = "none"
 
 }
 
