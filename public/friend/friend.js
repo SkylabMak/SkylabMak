@@ -143,6 +143,7 @@ function notfillAndSign() {
 }
 
 function removeuser() {
+    imgload.style.display = "block"
     removepopup.style.display = "none";
     console.log(phone_ID)
     let url = `
@@ -158,6 +159,7 @@ function removeuser() {
             IDstatus = 0
             //console.log(IDstatus)
             document.getElementById("popup_phone").value = ""
+            imgload.style.display = "none"
             notfillAndSign();
         })
         .catch((error) => {
