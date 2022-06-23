@@ -7,6 +7,7 @@ app.use(express.static("public/main"));
 app.use(express.static("public/friend"));
 app.use(express.static("public/profile"));
 app.use(express.static("public/admin"));
+app.use(express.static("public/chatbot_line"));
 
 app.get('', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/main/Html/index.html'));
@@ -19,6 +20,9 @@ app.get('/profile', function (req, res) {
 });
 app.get('/admin', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/admin/admin.html'));
+});
+app.get('/chatbot-line', function (req, res) {
+    res.sendFile(path.join(__dirname, '/public/chatbot_line/chatbot-line.html'));
 });
 
 let port = process.env.PORT;

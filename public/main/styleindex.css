@@ -415,11 +415,11 @@ input:focus {
     flex-grow: 1;
     margin:5px;
     padding: 5px;
-    text-align: justify;
+    text-align: left;
     word-wrap: break-word;
 }
 .Rnoti{
-    text-align: justify;
+    text-align: left;
     display:block;
     width: 100px;
     font-size: 75%;
