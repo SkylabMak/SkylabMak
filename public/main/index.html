@@ -87,11 +87,48 @@
                 <div class="center_Incontent">
                     <div class="overflowNoti">
                         <span class="text150">ประกาศ </span>
-                        <span id="textloading" class="textloading">-</span>
+                        <span id="textloadingNT" class="textloading">-</span>
                         <br>
                         <div id="boxnoty">
                         </div>
                     </div>
+                </div>
+        </div>
+        <div class="BOXcontent">
+            <!comment>
+                <a class="titleSn" style="color : #FF8A7C">
+                    comment
+                </a>
+                <div class="center_Incontent">
+                        <a id="comment" class="btnEven" style="color: rgb(0, 0, 0); background-color: #F7EB89">
+                            แสดงความคิดเห็น
+                        </a>
+                </div>
+                <div class="popup showdow" id="popupcomment">
+                    <!popupPhone>
+                        <div class="inpopup">
+                            <form>
+                                <p>
+                                    <label class="text150" for="input_comment">ความคิดเห็น :</label>
+                                    <textarea id="input_comment" name="comment"
+                                    placeholder="แสดงความคิดเห็น" rows="3"></textarea>
+                                </p>
+                                <div class="center_Incontent">
+                                    <button type="button" id="sendCM" class="btnmini"> ส่งข้อมูล</button>
+                                    <button type="button" id="close_popupCM" class="btnmini"> ปิดฟอร์ม</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="inpopup note Vertical_LineL">
+                            <span class="text150">คำอธิบาย <br></span>
+                            <span class="text100">ข้อความแสดงความคิดเห็นจะไม่แสดงสู่สาธารณะ 
+                                จะส่งตรงถึงผู้พัฒนา
+                            </span>
+                        </div>
+                        <div class="black_content">
+                            <span id="textloadingCM" class="textloading nondisplay">-</span>
+                            <span id="waitcomment" class="textinblack"></span>
+                        </div>
                 </div>
         </div>
     </div>

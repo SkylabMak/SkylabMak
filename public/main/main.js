@@ -2,16 +2,22 @@ fetch("https://skylab-api-login.herokuapp.com")
     .then((response) => { console.log(response) })
 document.title = "SkylabMak";
 //textloading
-const Tl = document.getElementById("textloading")
+const Tl = document.getElementById("textloadingNT")
+const Tlcomments = document.getElementById("textloadingCM")
 var i = 0
-const textL = ["-","\\","/"]
-setInterval(()=>{
-    if (i === 3){
-        i = 0
-    }
-    Tl.innerText = textL[i]
-    i += 1
-}, 100)
+const textL = ["-", "\\", "/"]
+function Ftextloading(tag){
+    setInterval(() => {
+        if (i === 3) {
+            i = 0
+        }
+        tag.innerText = textL[i]
+        i += 1
+    }, 100)
+}
+Ftextloading(Tl);
+Ftextloading(Tlcomments);
+
 
 //noty-----------------------------------------
 const boxnoty = document.getElementById("boxnoty")
@@ -34,9 +40,10 @@ async function shownoty() {
                 else {
                     return 0
                 }
-        
+
             })
-        return sortdata})
+            return sortdata
+        })
         .then((Groupdatanoty) => {
             console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", Groupdatanoty)
             Groupdatanoty.forEach((datanoty) => {
@@ -69,7 +76,7 @@ async function shownoty() {
                 boxavatar.append(img)
                 boxcenter.append(textnoty)
                 boxdate.append(textdate)
-                mainbox.append(boxavatar,boxcenter,boxdate)
+                mainbox.append(boxavatar, boxcenter, boxdate)
                 boxnoty.append(mainbox)
             })
             Tl.style.display = "none"
@@ -80,3 +87,50 @@ async function shownoty() {
         });
 }
 shownoty();
+//comment---------------------------------
+const btncomment = document.getElementById("comment")
+const popupcomment = document.getElementById("popupcomment")
+const btnCcomment = document.getElementById("close_popupCM")
+const btnsendcomment = document.getElementById("sendCM")
+const input_comment = document.getElementById("input_comment")
+btncomment.addEventListener("click", () =>
+    popupcomment.style.display = "block")
+btnCcomment.addEventListener("click", () => {
+    popupcomment.style.display = "none"
+})
+async function sendCM() {
+    Tlcomments.style.display = "inline-block"
+    var url = "https://skylab-api-login.herokuapp.com/comment/insert"
+    var bodycomment = {
+        "comment" : input_comment.value
+    }
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(bodycomment)
+    })
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) => {
+            Tlcomments.style.display = "none"
+            console.log(json)
+            let waitcomment = document.getElementById("waitcomment")
+            waitcomment.innerText = "เสร็จ"
+        })
+        .then(() => {
+            setTimeout(() =>{
+                input_comment.value = ""
+                let waitcomment = document.getElementById("waitcomment")
+                waitcomment.innerText = ""
+            },3000)
+        })
+        .catch((error) => {
+            console.log(err.stack);
+            //console.log("Error. fetch again")
+            //shownoty();
+        })
+}
+btnsendcomment.addEventListener("click",sendCM)

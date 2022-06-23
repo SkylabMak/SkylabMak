@@ -265,6 +265,7 @@ input:focus {
 }
 
 .inpopup {
+    text-align: center;
     vertical-align: top;
     display: inline-block;
 
@@ -311,6 +312,8 @@ input:focus {
 }
 
 .note {
+    inline-size: 250px;
+    word-wrap: break-word;
     vertical-align: top;
     text-align: left;
 }
