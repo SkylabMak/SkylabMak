@@ -449,5 +449,10 @@ input:focus {
     text-align: center;
     margin: 10px 50px 0 50px;
 }
+.textfooterHead{
+    font-size: 150%;
+    font-family: 'Chakra Petch', sans-serif;
+    color: #989898;
+}
 /*https://love2dev.com/blog/html-website-copyright/*/
 /*https://fontawesome.com/v5/icons/html5?s=brands*/
