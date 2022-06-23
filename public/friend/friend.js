@@ -287,7 +287,6 @@ async function createURLimg() {
                         updateuser();
                     }
                 }
-                imgload.style.display = "none"
             })
             .catch(error => {
                 imgload.style.display = "none"
