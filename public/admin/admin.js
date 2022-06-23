@@ -2,16 +2,23 @@
 const hidehtml = document.getElementById("hidehtml")
 //textloading
 const Tl = document.getElementById("textloading")
+const Tl02 = document.getElementById("textloadingNT")
+
 var i = 0
 const textL = ["-","\\","/"]
-setInterval(()=>{
-    if (i === 3){
-        i = 0
-    }
-    Tl.innerText = textL[i]
-    i += 1
-}, 100)
+function Ftextloading(tag){
+    setInterval(() => {
+        if (i === 3) {
+            i = 0
+        }
+        tag.innerText = textL[i]
+        i += 1
+    }, 100)
+}
+Ftextloading(Tl);
+Ftextloading(Tl02);
 Tl.style.display = "none"
+Tl02.style.display = "none"
 //login
 const popuplogin = document.getElementById("formlogin")
 const loginPhone = document.getElementById("loginPhone")
@@ -172,6 +179,7 @@ async function insertnoty(){
         })
         .then((json) => {
             console.log(json)
+            Tl02.style.display = "none"
             textcomP02.innerText = "เสร็จ"
 
         })
@@ -190,6 +198,5 @@ btnCinsertnoty.addEventListener("click",()=>{
 })
 popup.style.display = "none"
 
-//ณ ขณะนี้ ช่อง"notyfy" ใช้ได้ปกติ และจะแจ้งการ อัปเดต แก้ไข ทางนี้ เป็นหลัก
-//noty
+//ณ ขณะนี้ ช่อง"comment" พร้อมใช้งาน ทุกท่านสามารถแสดงความคิดเห็นหรือเสนอไอเดีย ต่างๆได้ ตามความในใจ
 //const editnoty = document.getElementById("editnoti")
