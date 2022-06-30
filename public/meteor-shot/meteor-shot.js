@@ -49,16 +49,13 @@ document.onmousemove = function (event) {
     //console.log("Y" + event.pageY + " " + "X" + event.pageX)
     ship.style.transform = centerShip + " " + ` rotate(${angle + 90}deg)`;
 }
-
+document.onmousedown = function (){
+    ship.src = "/pic/shipFire.png"
+}
+document.onmouseup = function (){
+    ship.src = "/pic/ship.png"
+}
 //in bodyspace----------------------------------------------------
-//mose 
-const bodyspace = document.getElementById("bodyspace");
-bodyspace.addEventListener("mousedown",() =>{
-    ship.src = "pic/shipFire.png"
-})
-bodyspace.addEventListener("mouseup",() =>{
-    ship.src = "pic/ship.png"
-})
 //hitbox
 var hitbox = {
     "x1": Number(positionShip.left.toFixed()), "x2": Number(positionShip.right.toFixed()),
@@ -206,7 +203,6 @@ function createmeteor(speed) {
     }, 10)
 
     meteor.addEventListener("mousedown", () => {
-        ship.src = "pic/shipFire.png"
         //mouseup
         meteor.remove();
         //console.log(indexscore)
@@ -228,9 +224,6 @@ function createmeteor(speed) {
         }
         score.innerText = scoretext
         clearInterval(MeteorIimeID)
-    })
-    meteor.addEventListener("mouseup",() =>{
-        ship.src = "pic/ship.png"
     })
 }
 //start game--------------------------------------------------------------
