@@ -206,6 +206,7 @@ function createmeteor(speed) {
     }, 10)
 
     meteor.addEventListener("mousedown", () => {
+        ship.src = "pic/shipFire.png"
         //mouseup
         meteor.remove();
         //console.log(indexscore)
@@ -227,6 +228,9 @@ function createmeteor(speed) {
         }
         score.innerText = scoretext
         clearInterval(MeteorIimeID)
+    })
+    meteor.addEventListener("mouseup",() =>{
+        ship.src = "pic/ship.png"
     })
 }
 //start game--------------------------------------------------------------
