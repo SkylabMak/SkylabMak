@@ -49,10 +49,10 @@ document.onmousemove = function (event) {
     //console.log("Y" + event.pageY + " " + "X" + event.pageX)
     ship.style.transform = centerShip + " " + ` rotate(${angle + 90}deg)`;
 }
-window.onmousedown = function (event) {
+document.onmousedown = function () {
     ship.src = "pic/shipFire.png"
 }
-window.onmouseup = function (event) {
+document.onmouseup = function () {
     ship.src = "pic/ship.png"
 }
 //in bodtspace----------------------------------------------------
