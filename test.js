@@ -1,8 +1,16 @@
-function test() {
-    const d = new Date();
-    date = String(d.getFullYear())
-        + String(("0" + (d.getMonth() + 1)).slice(-2))
-        + String(("0" + d.getDate()).slice(-2));
-    console.log(date);
+const difficulty = {
+    "hard" : {
+        "timecreatmrtrot" : 250,
+        "speed" : 3
+    },
+    "normal" : {
+        "timecreatmrtrot" : 500,
+        "speed" : 2
+    },
+    "eazy" : {
+        "timecreatmrtrot" : 1000,
+        "speed" : 1
+    }
 }
-test();
+
+console.log(difficulty.hard)

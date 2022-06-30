@@ -163,6 +163,7 @@ input:focus {
 
 .btnEven {
     text-align: center;
+    vertical-align: middle;
     color: white;
     background-color: white;
     border-radius: 10px;
@@ -174,6 +175,8 @@ input:focus {
     cursor: pointer;
     border: none;
     transition: transform 0.25s ease-out;
+    object-fit: none;
+    /*object-position: 100% 200%;*/
 }
 
 .btnEven:hover {
@@ -184,6 +187,7 @@ input:focus {
     display: inline-block;
     margin: 5px;
     transition: transform 0.25s ease-out;
+
 }
 
 .buttonImg:hover {

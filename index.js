@@ -8,6 +8,7 @@ app.use(express.static("public/friend"));
 app.use(express.static("public/profile"));
 app.use(express.static("public/admin"));
 app.use(express.static("public/chatbot_line"));
+app.use(express.static("public/meteor-shot"));
 
 app.get('', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/main/Html/index.html'));
@@ -23,6 +24,9 @@ app.get('/admin', function (req, res) {
 });
 app.get('/chatbot-line', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/chatbot_line/chatbot-line.html'));
+});
+app.get('/shooting-meteorite', function (req, res) {
+    res.sendFile(path.join(__dirname, '/public/meteor-shot/meteor-shot.html'));
 });
 
 let port = process.env.PORT;

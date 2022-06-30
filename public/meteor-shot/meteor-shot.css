@@ -1,0 +1,109 @@
+.no-copy{
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */     
+  }
+  
+.main_box_aim {
+    max-width: 100%;
+    margin: auto;
+    height: auto;
+    padding: 10px;
+    min-height: 250px;
+}
+.BOXcontent-aim { 
+    min-height:500px;
+    margin: 10px;
+    border-radius: 15px;
+    /*background-color: #1E1C40;*/
+    padding: 10px 20px 10px 20px;
+}
+.bodyspace{
+    background-color: #1E1C40;
+    min-height:500px;
+    border-radius: 15px;
+    position:relative;
+    overflow: hidden;
+}
+.ship{
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 98s;
+}
+.score{
+    position:absolute;
+    margin: 5px;
+    padding: 5px;
+    color:white;
+}
+.Showscore{
+    position:absolute;
+    left: 50%;
+    top: 100px;
+    text-align: center;
+    transform: translate(-50%, 0);
+    margin: 5px;
+    padding: 5px;
+    color:white;
+    font-size: 300%;
+    animation: armor 500ms infinite;
+    z-index: 99;
+}
+.time{
+    position:absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 5px;
+    padding: 5px;
+    color:white;
+}
+.btnstart{
+    position:absolute;
+    right:0;
+    margin: 10px;
+}
+.difficulty{
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    display: none;
+    width: 100%;
+    color:white;
+    background-color: #1E1C40;
+    z-index: 99;
+}
+.imagedif{
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.25s ease-out;
+}
+.imagedif:hover{
+    transform: scale(1.05, 1.05);
+}
+.meteor{
+    position:absolute;
+}
+.armor{
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: armor 500ms infinite;
+}
+@keyframes armor {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
