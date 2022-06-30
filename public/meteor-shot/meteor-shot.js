@@ -9,6 +9,8 @@ var xS = positionShip.left + getcenterShip;
 var yS = positionShip.top + getcenterShip;
 console.log(positionShip.left + getcenterShip)
 console.log(positionShip.top + getcenterShip)
+//prepare
+ship.src = "/pic/shipFire.png"
 window.scrollTo({
     top: 0,
     left: 0,
@@ -28,6 +30,10 @@ setTimeout(() => {
         behavior: 'smooth'
     });
 },500)
+setTimeout(() => {
+    ship.src = "/pic/ship.png"
+},1000)
+//-----------------------------------------
 window.addEventListener("scroll", () => {
     positionShip = ship.getBoundingClientRect();
     getcenterShip = (positionShip.right - positionShip.left) / 2
