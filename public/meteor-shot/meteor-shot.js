@@ -49,12 +49,12 @@ document.onmousemove = function (event) {
     //console.log("Y" + event.pageY + " " + "X" + event.pageX)
     ship.style.transform = centerShip + " " + ` rotate(${angle + 90}deg)`;
 }
-document.onmousedown = function () {
+window.addEventListener("mousedown",() =>{
     ship.src = "pic/shipFire.png"
-}
-document.onmouseup = function () {
+})
+window.addEventListener("mouseup",() =>{
     ship.src = "pic/ship.png"
-}
+})
 //in bodtspace----------------------------------------------------
 //hitbox
 var hitbox = {
