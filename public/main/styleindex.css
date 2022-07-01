@@ -461,7 +461,36 @@ input:focus {
     text-align: center;
     margin: 10px 0px 0px 0px;
 }
-.textfooterHead{
+.textfooter{
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 5px;
+    margin-bottom: 10px;
+}
+.Lfooter{
+    display:block;
+    word-wrap: break-word;
+}
+.Rfooter{
+    border-left: 1px solid #4c3e6b;
+    padding: 0 0 0 10px;
+    text-align: left;
+    display:block;
+    word-wrap: break-word;
+}
+.imgiconfooter{
+    height: 15px;
+}
+.lingfooter{
+    text-decoration: none;
+    color: #989898;
+    transition: color 0.2s ease-out;
+}
+.lingfooter:hover{
+    color: #fafafa;
+}
+.textfootername{
     font-size: 150%;
     font-family: 'Chakra Petch', sans-serif;
     color: #989898;

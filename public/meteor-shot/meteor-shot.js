@@ -31,6 +31,11 @@ setTimeout(() => {
     });
 },500)
 setTimeout(() => {
+    window.scrollTo({
+        top: 100,
+        left: 0,
+        behavior: 'smooth'
+    });
     ship.src = "/pic/ship.png"
 },1000)
 //-----------------------------------------

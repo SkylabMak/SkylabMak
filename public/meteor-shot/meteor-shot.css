@@ -4,7 +4,10 @@
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;          /* Likely future */     
   }
-  
+.titleMS{
+    text-align: center;
+    width:auto;
+}
 .main_box_aim {
     max-width: 100%;
     margin: auto;
