@@ -35,7 +35,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 98s;
+    z-index: 97;
 }
 .score{
     position:absolute;
@@ -92,6 +92,21 @@
 }
 .meteor{
     position:absolute;
+    z-index: 98;
+
+}
+.laser{
+    display: none;
+    position:absolute;
+    z-index: 96;
+    background-color:red;
+    width: 2px;
+    height: 100px;
+    left: 50%;
+    top: 50%;
+    transform-origin: 0% 0%;
+    transform: rotate(0deg);
+    border-radius: 50px
 }
 .armor{
     height: 100px;
@@ -100,6 +115,11 @@
     top: 50%;
     transform: translate(-50%, -50%);
     animation: armor 500ms infinite;
+    z-index: 97;
+}
+.boom{
+    position: absolute;
+    display: none;
 }
 @keyframes armor {
     from {

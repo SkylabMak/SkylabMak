@@ -53,17 +53,30 @@ window.addEventListener('resize', ()=>{
 });
 
 document.onmousemove = function (event) {
-
+    let laser = document.getElementById("laser")
     let angle = Math.atan2(event.pageY - yS
         , event.pageX - xS) * (180 / Math.PI)
     //console.log(angle);
     //console.log("Y" + event.pageY + " " + "X" + event.pageX)
     ship.style.transform = centerShip + " " + ` rotate(${angle + 90}deg)`;
+    laser.style.transform =`rotate(${angle-90}deg)`
+}
+//mouse down up 
+const laser = document.getElementById("laser")
+var laserposition = laser.getBoundingClientRect();
+function getDistanceDivide2(x1, y1, x2, y2){
+    let y = (x2 - x1);
+    let x = (y2 - y1);
+    
+    return Math.sqrt(x * x + y * y);
 }
 document.onmousedown = function (){
+    laser.style.display ="block"
     ship.src = "/pic/shipFire.png"
 }
 document.onmouseup = function (){
+    laser.style.height = "100px"
+    laser.style.display ="none"
     ship.src = "/pic/ship.png"
 }
 //in bodyspace----------------------------------------------------
@@ -132,6 +145,7 @@ const property = [{
     "img": "meteor5.png"
 }
 ]
+
 function createmeteor(speed) {
     var indexscore = 0
     //declaration-------------------------------
@@ -140,6 +154,11 @@ function createmeteor(speed) {
     let typemrteor = property[Randomtype]
     const bodyspace = document.getElementById("bodyspace");
     const meteor = document.createElement("img");
+    const boom = document.createElement("img")
+    boom.classList.add("boom")
+    boom.src = "pic/boom.png"
+    boom.style.width = typemrteor.size
+    bodyspace.append(boom)
 
     //createmeteor-------------------------------
     meteor.classList.add('meteor');
@@ -148,6 +167,7 @@ function createmeteor(speed) {
     meteor.style.width = typemrteor.size
     meteor.style.height = typemrteor.size
     bodyspace.append(meteor);
+
 
     //position and center image
     let Mp = getRandomIntBodyspace(
@@ -172,12 +192,14 @@ function createmeteor(speed) {
     var xMRealtime = positionMeteor.left + centerImg
     var yMRealtime = positionMeteor.top + centerImg
     var MeteorIimeID = setInterval(() => {
-        indexscore += 1
+        indexscore += 1 
         i += speed
         //console.log(i)
         positionMeteor = meteor.getBoundingClientRect();
         xMRealtime = (Number(positionMeteor.left + centerImg).toFixed());
         yMRealtime = (Number(positionMeteor.top + centerImg).toFixed());
+        boom.style.left = `${positionMeteor.left-centerImg}px`
+        boom.style.top = `${(positionMeteor.top-300)+window.scrollY}px`
         /*
         console.log(xMRealtime, "=", `{${hitbox.x1},${hitbox.x2}}`,
             "& ", yMRealtime + "=", `{${hitbox.y1},${hitbox.y2}}`);
@@ -187,6 +209,7 @@ function createmeteor(speed) {
             ` rotate(${angleM - 5}deg)` + " " + `translate(${i}%, 0%)`;
         if ((xMRealtime > hitbox.x1 && xMRealtime < hitbox.x2) &&
             (yMRealtime > hitbox.y1 && yMRealtime < hitbox.y2)) {
+            boom.remove();
             //console.log("ทำงาน")
             if (typemrteor === 0) {
                 scoretext -= 8
@@ -213,9 +236,16 @@ function createmeteor(speed) {
 
     }, 10)
 
+    
     meteor.addEventListener("mousedown", () => {
+        laser.style.height = `${getDistanceDivide2(
+            positionShip.left + getcenterShip,
+            positionShip.top + getcenterShip,
+            positionMeteor.left+centerImg,
+            positionMeteor.top+centerImg)}px`
         //mouseup
         meteor.remove();
+        boom.style.display = "block"
         //console.log(indexscore)
         //console.log(scoretext)
         if ((indexscore) <= 50) {
@@ -234,9 +264,14 @@ function createmeteor(speed) {
             scoretext += 1
         }
         score.innerText = scoretext
+        setTimeout(()=>{
+            boom.style.display = "none"
+        },200)
         clearInterval(MeteorIimeID)
     })
+    
 }
+
 //start game--------------------------------------------------------------
 //typr
 const difficultyType = {
@@ -273,7 +308,7 @@ function startgame(type) {
 }
 
 
-//btn
+//btn---------------------------------------------
 
 start.addEventListener("click", () => {
     let difficulty = document.getElementById("difficulty")
