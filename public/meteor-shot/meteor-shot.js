@@ -2,6 +2,7 @@
 var ship = document.getElementById("ship")
 const centerShip = "translate(-50%, -50%)"
 ship.style.transform = centerShip + " " + ` rotate(0deg)`;
+document.title = "SM. shooting meteorite";
 
 var positionShip = ship.getBoundingClientRect();
 var getcenterShip = (positionShip.right - positionShip.left) / 2

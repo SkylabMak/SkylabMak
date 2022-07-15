@@ -316,6 +316,9 @@ input:focus {
 .text100 {
     font-size: 100%
 }
+.text75 {
+    font-size: 75%
+}
 .nondisplay {
     display: none;
 }
