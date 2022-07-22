@@ -14,3 +14,4 @@ const difficulty = {
 }
 
 console.log(difficulty.hard)
+//test git
