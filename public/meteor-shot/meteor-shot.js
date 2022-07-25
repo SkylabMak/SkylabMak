@@ -4,6 +4,7 @@ const centerShip = "translate(-50%, -50%)"
 ship.style.transform = centerShip + " " + ` rotate(0deg)`;
 document.title = "SM. shooting meteorite";
 
+var IDgive_up = 0;
 var positionShip = ship.getBoundingClientRect();
 var getcenterShip = (positionShip.right - positionShip.left) / 2
 var xS = positionShip.left + getcenterShip;
@@ -101,11 +102,12 @@ function countdown(maxtime) {
     var countdownTimeId = setInterval(() => {
         thistime -= 1
         time.innerText = thistime
-        if (thistime === 0) {
+        if (thistime === 0 || IDgive_up === 1) {
             clearInterval(countdownTimeId)
         }
     }, 1000)
 }
+
 
 //meteor---------------------------------------------------------------
 function getRandomInt(max) {
@@ -228,7 +230,7 @@ function createmeteor(speed) {
 
             clearInterval(MeteorIimeID)
         }
-        if (thistime === 0) {
+        if (thistime === 0 || IDgive_up === 1) {
             meteor.remove();
             clearInterval(MeteorIimeID)
         }
@@ -267,6 +269,7 @@ function createmeteor(speed) {
         score.innerText = scoretext
         setTimeout(()=>{
             boom.style.display = "none"
+            laser.style.display ="none"
         },200)
         clearInterval(MeteorIimeID)
     })
@@ -290,7 +293,9 @@ const difficultyType = {
     }
 }
 const start = document.getElementById("start");
+const give_up = document.getElementById("give-up");
 function startgame(type) {
+    IDgive_up = 0
     score.classList.remove("Showscore")
     scoretext = 0
     console.log(type)
@@ -299,7 +304,7 @@ function startgame(type) {
     }, type.timecreatmeteor)
     countdown(60)
     var startcountdown = setInterval(() => {
-        if (thistime === 0) {
+        if (thistime === 0 || IDgive_up === 1) {
             start.style.display = "block"
             score.classList.add("Showscore")
             clearInterval(createmeteorIimeID)
@@ -315,6 +320,12 @@ start.addEventListener("click", () => {
     let difficulty = document.getElementById("difficulty")
     difficulty.style.display = "inline-block"
     start.style.display = "none"
+    give_up.style.display ="block"
+})
+give_up.addEventListener("click", () => {
+    IDgive_up = 1;
+    start.style.display = "block"
+    give_up.style.display ="none"
 })
 const hard = document.getElementById("hard")
     .addEventListener("click", () => {
@@ -332,3 +343,5 @@ const eazy = document.getElementById("eazy")
         difficulty.style.display = "none";
     })
 
+start.style.display = "block"
+give_up.style.display ="none"
