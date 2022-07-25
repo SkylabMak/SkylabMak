@@ -297,7 +297,7 @@ function startgame(type) {
     var createmeteorIimeID = setInterval(() => {
         createmeteor(type.speed)
     }, type.timecreatmeteor)
-    countdown(120)
+    countdown(60)
     var startcountdown = setInterval(() => {
         if (thistime === 0) {
             start.style.display = "block"
