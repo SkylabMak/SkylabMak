@@ -80,6 +80,9 @@ document.onmouseup = function (){
     laser.style.height = "100px"
     laser.style.display ="none"
     ship.src = "/pic/ship.png"
+    setTimeout(()=>{
+        laser.style.display ="none"
+    },10)
 }
 //in bodyspace----------------------------------------------------
 //hitbox
@@ -269,7 +272,6 @@ function createmeteor(speed) {
         score.innerText = scoretext
         setTimeout(()=>{
             boom.style.display = "none"
-            laser.style.display ="none"
         },200)
         clearInterval(MeteorIimeID)
     })
