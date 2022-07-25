@@ -105,6 +105,7 @@ var refresh = document.getElementById("refresh")
 var sureremove = document.getElementById('sureremove');
 var notsureremove = document.getElementById('notsureremove');
 var hide = document.getElementById('hide');
+var visit = document.getElementById('visit');
 //imgInput
 var imgInput = document.getElementById('imgUpload')
 var showimg = document.getElementById('showimg')
@@ -113,6 +114,7 @@ var tagnameimg = document.getElementById('nameimg')
 var imgload = document.getElementById('imgloder')
 
 function notfill() {
+    visit.style.display = "none";
     fromEditData.style.display = "none";
     sign.style.display = "none";
     edit.style.display = "inline-block";
@@ -127,9 +129,10 @@ function notfill() {
 }
 
 function notfillAndSign() {
+    remove.style.display = "none";
+    visit.style.display = "inline-block";
     fromEditData.style.display = "none";
     edit.style.display = "none";
-    remove.style.display = "none";
     sign.style.display = "inline-block";
     signout.style.display = "none";
     leave.style.display = "inline-block";
@@ -330,6 +333,18 @@ function fillNew() {
 
     senData.addEventListener("click", createURLimg)
 }
+function Fvisit() {
+    visit.style.display = "none";
+    fromEditData.style.display = "none";
+    sign.style.display = "none";
+    edit.style.display = "none";
+    remove.style.display = "none";
+    screenShow.style.display = "block";
+    signout.style.display = "none";
+    leave.style.display = "inline-block";
+    boxPhone.style.display = "none";
+    getallusersAndcreateCard();
+}
 
 async function fillOld() {
     imgload.style.display = "block"
@@ -391,6 +406,7 @@ imgInput.addEventListener('change', preview)
 edit.addEventListener("click", fillOld)
 signout.addEventListener("click",notfillAndSign)
 refresh.addEventListener("click", getallusersAndcreateCard)
+visit.addEventListener("click",Fvisit)
 leave.addEventListener("click",() => {
     history.back();
 })
@@ -519,6 +535,7 @@ if (String(localStorage.getItem('saveID')) === 'null'){
     notfillAndSign()
 }
 else{
+    visit.style.display = "none";
     sign.style.display = "none";
     imgload.style.display = "block"
     async function secondfunction (){
