@@ -46,12 +46,12 @@
 }
 
 .BOXcontentPF { 
-    vertical-align: top;
+    vertical-align: middle;
     word-wrap: break-word;
     text-align: left;
     width: auto;
     display:inline-block;
-    margin: 5px;
+    margin: 5px 5px 10px 5px;
     border-radius: 15px;
     background-color: #422A4C;
     padding: 10px 20px 10px 20px;
