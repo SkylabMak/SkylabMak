@@ -197,6 +197,33 @@ btnCinsertnoty.addEventListener("click",()=>{
     popup.style.display = "none"
 })
 popup.style.display = "none"
+const btn_comment = document.getElementById("btncomment")
+const boxcommnet = document.getElementById("comment")
+btn_comment.addEventListener("click",()=>{
+    let url = "https://skylab-api-login.herokuapp.com/comment"
+    fetch(url)
+        .then((response) => {
+            return response.json();
+        })
+        .then((Groupdatanoty) => {
+            console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", Groupdatanoty)
+            Groupdatanoty.forEach((datanoty) => {
+                //box
+                let boxdate = document.createElement('div');
+
+                //text
+                let textnoty = document.createElement('span');
+                textnoty.innerText = datanoty.comment;
+
+                //mix 
+                boxdate.append(textnoty)
+                boxcommnet.append(boxdate)
+            })
+        })
+        .catch(() => {
+            console.dir(error);
+        });
+})
 
 //ณ ขณะนี้ ช่อง"comment" พร้อมใช้งาน ทุกท่านสามารถแสดงความคิดเห็นหรือเสนอไอเดีย ต่างๆได้ ตามความในใจ
 //const editnoty = document.getElementById("editnoti")
