@@ -308,6 +308,7 @@ function startgame(type) {
     var startcountdown = setInterval(() => {
         if (thistime === 0 || IDgive_up === 1) {
             start.style.display = "block"
+            give_up.style.display ="none"
             score.classList.add("Showscore")
             clearInterval(createmeteorIimeID)
             clearInterval(startcountdown)
