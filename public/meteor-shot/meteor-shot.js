@@ -218,13 +218,13 @@ function createmeteor(speed) {
             boom.remove();
             //console.log("ทำงาน")
             if (typemrteor === 0) {
-                scoretext -= 8
+                scoretext -= 15
             }
             else if (typemrteor === 1) {
-                scoretext -= 5
+                scoretext -= -13
             }
             else {
-                scoretext -= 1
+                scoretext -= 10
             }
             score.innerText = scoretext
             setTimeout(() => {
