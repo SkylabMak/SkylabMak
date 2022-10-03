@@ -86,7 +86,7 @@ async function shownoty() {
             shownoty();
         });
 }
-shownoty();
+//shownoty();
 //comment---------------------------------
 const btncomment = document.getElementById("comment")
 const popupcomment = document.getElementById("popupcomment")
