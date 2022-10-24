@@ -1,8 +1,11 @@
 //ship-----------------------------------------------------
+const bodyspace = document.getElementById("bodyspace");
 var ship = document.getElementById("ship")
 const centerShip = "translate(-50%, -50%)"
 ship.style.transform = centerShip + " " + ` rotate(0deg)`;
 document.title = "SM. shooting meteorite";
+//armor--------------------
+const armor = document.getElementById("armor");
 
 var IDgive_up = 0;
 var positionShip = ship.getBoundingClientRect();
@@ -107,6 +110,7 @@ function countdown(maxtime) {
         time.innerText = thistime
         if (thistime === 0 || IDgive_up === 1) {
             clearInterval(countdownTimeId)
+
         }
     }, 1000)
 }
@@ -152,27 +156,31 @@ const property = [{
 }
 ]
 
-function createmeteor(speed) {
+function createmeteor(speed,bodymeteor) {
     var indexscore = 0
     //declaration-------------------------------
-    let Randomtype = (getRandomInt(3));
-    //console.log(Randomtype);
-    let typemrteor = property[Randomtype]
-    const bodyspace = document.getElementById("bodyspace");
-    const meteor = document.createElement("img");
+    let typemrteor = property[getRandomInt(3)]
     const boom = document.createElement("img")
+    const meteor = document.createElement("img");
+    bodyspace.append(bodymeteor)
+    bodymeteor.append(boom)
+
+    function removeMeteor (MeteorIimeID){
+        meteor.remove();
+        boom.remove();
+        clearInterval(MeteorIimeID)
+}
+    //boom-----------------------------------
     boom.classList.add("boom")
     boom.src = "pic/boom.png"
     boom.style.width = typemrteor.size
-    bodyspace.append(boom)
-
     //createmeteor-------------------------------
     meteor.classList.add('meteor');
     let urlImg = `/pic/meteor/${typemrteor.img}`;
     meteor.src = urlImg;
     meteor.style.width = typemrteor.size
     meteor.style.height = typemrteor.size
-    bodyspace.append(meteor);
+    bodymeteor.append(meteor);
 
 
     //position and center image
@@ -204,8 +212,7 @@ function createmeteor(speed) {
         positionMeteor = meteor.getBoundingClientRect();
         xMRealtime = (Number(positionMeteor.left + centerImg).toFixed());
         yMRealtime = (Number(positionMeteor.top + centerImg).toFixed());
-        boom.style.left = `${positionMeteor.left-centerImg}px`
-        boom.style.top = `${(positionMeteor.top-300)+window.scrollY}px`
+        
         /*
         console.log(xMRealtime, "=", `{${hitbox.x1},${hitbox.x2}}`,
             "& ", yMRealtime + "=", `{${hitbox.y1},${hitbox.y2}}`);
@@ -215,6 +222,7 @@ function createmeteor(speed) {
             ` rotate(${angleM - 5}deg)` + " " + `translate(${i}%, 0%)`;
         if ((xMRealtime > hitbox.x1 && xMRealtime < hitbox.x2) &&
             (yMRealtime > hitbox.y1 && yMRealtime < hitbox.y2)) {
+            armor.style.filter = "hue-rotate(167deg)"
             boom.remove();
             //console.log("ทำงาน")
             if (typemrteor === 0) {
@@ -229,17 +237,18 @@ function createmeteor(speed) {
             score.innerText = scoretext
             setTimeout(() => {
                 meteor.remove();
+                armor.style.filter = "hue-rotate(0deg)"
             }, 100)
 
             clearInterval(MeteorIimeID)
         }
-        if (thistime === 0 || IDgive_up === 1) {
-            meteor.remove();
-            clearInterval(MeteorIimeID)
-        }
-
-        //console.log(scoretext)
-
+        setTimeout(() => {
+            if (((positionMeteor.left+meteor.offsetWidth) < bodyspace.offsetLeft) || positionMeteor.left > (bodyspace.offsetLeft+bodyspace.offsetWidth)
+            || (positionMeteor.top+meteor.offsetHeight)< bodyspace.offsetTop || positionMeteor.top > (bodyspace.offsetHeight+bodyspace.offsetHeight)){
+                //console.log("work")
+                removeMeteor (MeteorIimeID);
+            }
+        },1000)
     }, 10)
 
     
@@ -250,6 +259,8 @@ function createmeteor(speed) {
             positionMeteor.left+centerImg,
             positionMeteor.top+centerImg)}px`
         //mouseup
+        boom.style.left = `${positionMeteor.left-centerImg}px`
+        boom.style.top = `${(positionMeteor.top-300)+window.scrollY}px`
         meteor.remove();
         boom.style.display = "block"
         //console.log(indexscore)
@@ -271,7 +282,7 @@ function createmeteor(speed) {
         }
         score.innerText = scoretext
         setTimeout(()=>{
-            boom.style.display = "none"
+            boom.remove();
         },200)
         clearInterval(MeteorIimeID)
     })
@@ -297,13 +308,17 @@ const difficultyType = {
 const start = document.getElementById("start");
 const give_up = document.getElementById("give-up");
 function startgame(type) {
+    const bodymeteor = document.createElement("div");
+    bodymeteor.setAttribute('id','bodymeteor');
+    bodyspace.append(bodymeteor);
     IDgive_up = 0
     score.classList.remove("Showscore")
     scoretext = 0
     console.log(type)
     var createmeteorIimeID = setInterval(() => {
-        createmeteor(type.speed)
+        createmeteor(type.speed,bodymeteor)
     }, type.timecreatmeteor)
+    //createmeteor(type.speed,bodymeteor)
     countdown(60)
     var startcountdown = setInterval(() => {
         if (thistime === 0 || IDgive_up === 1) {
@@ -312,6 +327,7 @@ function startgame(type) {
             score.classList.add("Showscore")
             clearInterval(createmeteorIimeID)
             clearInterval(startcountdown)
+            bodymeteor.remove();
         }
     }, 100)
 }
@@ -329,6 +345,8 @@ give_up.addEventListener("click", () => {
     IDgive_up = 1;
     start.style.display = "block"
     give_up.style.display ="none"
+    //document.getElementById('bodymeteor').parentNode.removeChild(document.getElementById('bodymeteor'));
+    
 })
 const hard = document.getElementById("hard")
     .addEventListener("click", () => {
