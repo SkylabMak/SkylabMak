@@ -12,7 +12,6 @@ var positionShip = ship.getBoundingClientRect();
 var getcenterShip = (positionShip.right - positionShip.left) / 2
 var xS = positionShip.left + getcenterShip;
 var yS = positionShip.top + getcenterShip;
-console.log(xS + " " + yS + " " )
 console.log(positionShip.left + getcenterShip)
 console.log(positionShip.top + getcenterShip)
 //prepare
@@ -223,6 +222,7 @@ function createmeteor(speed,bodymeteor) {
             ` rotate(${angleM - 5}deg)` + " " + `translate(${i}%, 0%)`;
         if ((xMRealtime > hitbox.x1 && xMRealtime < hitbox.x2) &&
             (yMRealtime > hitbox.y1 && yMRealtime < hitbox.y2)) {
+                console.log(work)
             armor.style.filter = "hue-rotate(167deg)"
             boom.remove();
             //console.log("ทำงาน")
