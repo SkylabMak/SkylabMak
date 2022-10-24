@@ -12,6 +12,7 @@ var positionShip = ship.getBoundingClientRect();
 var getcenterShip = (positionShip.right - positionShip.left) / 2
 var xS = positionShip.left + getcenterShip;
 var yS = positionShip.top + getcenterShip;
+console.log(xS + " " + yS + " " )
 console.log(positionShip.left + getcenterShip)
 console.log(positionShip.top + getcenterShip)
 //prepare
