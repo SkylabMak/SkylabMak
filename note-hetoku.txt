@@ -6,6 +6,7 @@ heroku git:remote -a skylabma
 3. git push heroku main
 -----------------------------------------
 การดึง
+1. cd skylabmak
 1. heroku login (ลอง2 ก่อน ถ้าไม่ได้ ทำ 1)
 2. git pull heroku main
 -----------------------------------------
