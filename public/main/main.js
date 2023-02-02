@@ -91,7 +91,7 @@ async function shownoty() {
             else{
                 Tl.style.display = "none"
                 let textnoty = document.createElement('span');
-                textnoty.innerText = "Error connot get comment";
+                textnoty.innerText = "Error connot get notify";
                 boxnoty.append(textnoty)
                 console.log("Error fetch, stop ")
             }
