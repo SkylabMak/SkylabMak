@@ -89,8 +89,9 @@ async function shownoty() {
                 reloadCount++;
             }
             else{
+                Tl.style.display = "none"
                 let textnoty = document.createElement('span');
-                textnoty.innerText = "eror connot get comment";
+                textnoty.innerText = "Error connot get comment";
                 boxnoty.append(textnoty)
                 console.log("Error fetch, stop ")
             }
