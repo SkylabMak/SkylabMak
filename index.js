@@ -11,14 +11,14 @@ app.listen(PORT, () => {
     console.log('App listening on port ' + port);
 })
 
-app.use(express.static("public"));
-app.use(express.static("public/main"));
-app.use(express.static("public/friend"));
-app.use(express.static("public/profile"));
-app.use(express.static("public/admin"));
-app.use(express.static("public/chatbot_line"));
-app.use(express.static("public/meteor-shot"));
-app.use(express.static("public/42rush"));
+app.use(express.static(__dirname +"public"));
+app.use(express.static(__dirname +"public/main"));
+app.use(express.static(__dirname +"public/friend"));
+app.use(express.static(__dirname +"public/profile"));
+app.use(express.static(__dirname +"public/admin"));
+app.use(express.static(__dirname +"public/chatbot_line"));
+app.use(express.static(__dirname +"public/meteor-shot"));
+app.use(express.static(__dirname +"public/42rush"));
 
 app.get('', function (req, res) {
     res.send("this is my website test")
