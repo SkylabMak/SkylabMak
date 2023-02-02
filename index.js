@@ -12,13 +12,13 @@ app.listen(PORT, () => {
 })
 
 app.use(express.static(path.join(__dirname, '/public/main')));
-app.use(express.static(__dirname +"public/main"));
-app.use(express.static(__dirname +"public/friend"));
-app.use(express.static(__dirname +"public/profile"));
-app.use(express.static(__dirname +"public/admin"));
-app.use(express.static(__dirname +"public/chatbot_line"));
-app.use(express.static(__dirname +"public/meteor-shot"));
-app.use(express.static(__dirname +"public/42rush"));
+app.use(express.static(path.join(__dirname, '/public/friend')));
+app.use(express.static(path.join(__dirname, '/public/profile')));
+app.use(express.static(path.join(__dirname, '/public/admin')));
+app.use(express.static(path.join(__dirname, '/public/chatbot_line')));
+app.use(express.static(path.join(__dirname, '/public/meteor-shot')));
+app.use(express.static(path.join(__dirname, '/public/42rush')));
+
 
 app.get('', function (req, res) {
     //console.log(path.join(__dirname, 'public/main/Html/index.html'))
