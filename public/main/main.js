@@ -86,6 +86,7 @@ async function shownoty() {
             console.log("Error fetch "+reloadCount)
             if(reloadCount <= 3){
                 setTimeout(shownoty(), 1000);
+                reloadCount++;
             }
             else{
                 let textnoty = document.createElement('span');
