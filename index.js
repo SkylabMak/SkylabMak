@@ -8,17 +8,10 @@ if (PORT == null || PORT == "") {
 }
 
 app.listen(PORT, () => {
-    console.log('App listening on port ' + port);
+    console.log('App listening on port ' + PORT);
 })
 
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.static(path.join(__dirname, '/public/main')));
-app.use(express.static(path.join(__dirname, '/public/friend')));
-app.use(express.static(path.join(__dirname, '/public/profile')));
-app.use(express.static(path.join(__dirname, '/public/admin')));
-app.use(express.static(path.join(__dirname, '/public/chatbot_line')));
-app.use(express.static(path.join(__dirname, '/public/meteor-shot')));
-app.use(express.static(path.join(__dirname, '/public/42rush')));
 
 
 app.get('', function (req, res) {
