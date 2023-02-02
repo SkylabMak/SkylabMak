@@ -1,6 +1,11 @@
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
 const path = require('path');
+
+let PORT = process.env.PORT;
+if (PORT == null || port == "") {
+    PORT = 4000;
+}
 
 app.use(express.static("public"));
 app.use(express.static("public/main"));
@@ -13,6 +18,10 @@ app.use(express.static("public/42rush"));
 
 app.get('', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/main/Html/index.html'));
+});
+app.get('/', function (req, res) {
+    res.send("this is my website test")
+    //res.sendFile(path.join(__dirname, '/public/main/Html/index.html'));
 });
 app.get('/friend', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/friend/friendMain.html'));
@@ -32,11 +41,6 @@ app.get('/shooting-meteorite', function (req, res) {
 app.get('/42_discovery_piscine', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/42rush/index.html'));
 });
-
-let port = process.env.PORT;
-if (port == null || port == "") {
-    port = 1000;
-}
 
 app.listen(port, () => {
     console.log('App listening on port ' + port);
