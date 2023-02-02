@@ -90,7 +90,7 @@ async function shownoty() {
             }
             else{
                 let textnoty = document.createElement('span');
-                textnoty.innerText = datanoty.text;
+                textnoty.innerText = "eror connot get comment";
                 boxnoty.append(textnoty)
                 console.log("Error fetch, stop ")
             }
