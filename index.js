@@ -22,7 +22,7 @@ app.use(express.static("public/42rush"));
 
 app.get('', function (req, res) {
     res.send("this is my website test")
-    res.sendFile(path.join(__dirname, '/public/main/Html/index.html'));
+    //res.sendFile(path.join(__dirname, '/public/main/Html/index.html'));
 });
 app.get('/', function (req, res) {
     res.send("this is my website test")
