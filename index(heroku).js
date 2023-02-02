@@ -43,4 +43,3 @@ app.listen(port, () => {
 })
 //tps://www.digitalocean.com/community/tutorials/use-expressjs-to-deliver-html-files
 //https://stackoverflow.com/questions/38757235/express-how-to-send-html-together-with-css-using-sendfile
-module.exports = app
