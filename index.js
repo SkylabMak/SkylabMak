@@ -21,9 +21,10 @@ app.use(express.static(__dirname +"public/meteor-shot"));
 app.use(express.static(__dirname +"public/42rush"));
 
 app.get('', function (req, res) {
-    console.log(path.join(__dirname, '/public/main/Html/index.html'))
-    res.send("this is my website test")
-    //res.sendFile(path.join(__dirname, '/public/main/Html/index.html'));
+    //console.log(path.join(__dirname, 'public/main/Html/index.html'))
+    //res.send("this is my website test")
+    res.sendFile(__dirname +'public/main/Html/index.html');
+    //res.sendFile(path.join(__dirname, 'public/main/Html/index.html'));
 });
 app.get('/friend', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/friend/friendMain.html'));
