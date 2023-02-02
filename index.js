@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 
 let PORT = process.env.PORT;
-if (PORT == null || port == "") {
+if (PORT == null || PORT == "") {
     PORT = 4000;
 }
 
