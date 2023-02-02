@@ -20,6 +20,7 @@ Ftextloading(Tlcomments);
 
 
 //noty-----------------------------------------
+let reloadCount = 0;
 const boxnoty = document.getElementById("boxnoty")
 async function shownoty() {
     Tl.style.display = "inline-block"
@@ -82,8 +83,17 @@ async function shownoty() {
             Tl.style.display = "none"
         })
         .catch(() => {
-            console.log("Error fetch again")
-            shownoty();
+            console.log("Error fetch "+reloadCount)
+            if(reloadCount <= 3){
+                setTimeout(shownoty(), 1000);
+            }
+            else{
+                let textnoty = document.createElement('span');
+                textnoty.innerText = datanoty.text;
+                boxnoty.append(textnoty)
+                console.log("Error fetch, stop ")
+            }
+            
         });
 }
 shownoty();
