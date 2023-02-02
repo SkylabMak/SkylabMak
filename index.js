@@ -7,6 +7,10 @@ if (PORT == null || port == "") {
     PORT = 4000;
 }
 
+app.listen(PORT, () => {
+    console.log('App listening on port ' + port);
+})
+
 app.use(express.static("public"));
 app.use(express.static("public/main"));
 app.use(express.static("public/friend"));
@@ -42,9 +46,7 @@ app.get('/42_discovery_piscine', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/42rush/index.html'));
 });
 
-app.listen(port, () => {
-    console.log('App listening on port ' + port);
-})
+
 //tps://www.digitalocean.com/community/tutorials/use-expressjs-to-deliver-html-files
 //https://stackoverflow.com/questions/38757235/express-how-to-send-html-together-with-css-using-sendfile
 module.exports = app
