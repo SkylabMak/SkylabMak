@@ -11,7 +11,7 @@ app.listen(PORT, () => {
     console.log('App listening on port ' + port);
 })
 
-app.use(express.static(__dirname +"public"));
+app.use(express.static(path.join(__dirname, '/public/main')));
 app.use(express.static(__dirname +"public/main"));
 app.use(express.static(__dirname +"public/friend"));
 app.use(express.static(__dirname +"public/profile"));
@@ -22,7 +22,7 @@ app.use(express.static(__dirname +"public/42rush"));
 
 app.get('', function (req, res) {
     //console.log(path.join(__dirname, 'public/main/Html/index.html'))
-    res.sendFile(path.join(__dirname, 'public/main/index.html'));
+    res.sendFile(path.join(__dirname, '/public/main/index.html'));
 });
 app.get('/friend', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/friend/friendMain.html'));
