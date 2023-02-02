@@ -11,6 +11,7 @@ app.listen(PORT, () => {
     console.log('App listening on port ' + port);
 })
 
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '/public/main')));
 app.use(express.static(path.join(__dirname, '/public/friend')));
 app.use(express.static(path.join(__dirname, '/public/profile')));
