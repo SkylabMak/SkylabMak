@@ -24,7 +24,7 @@ let reloadCount = 0;
 const boxnoty = document.getElementById("boxnoty")
 async function shownoty() {
     Tl.style.display = "inline-block"
-    let url = "https://db-admin-one.vercel.app/"
+    let url = "https://db-admin-one.vercel.app/noty"
     fetch(url)
         .then((response) => {
             return response.json();
