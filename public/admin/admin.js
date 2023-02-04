@@ -30,6 +30,7 @@ const textcomP = document.getElementById("textcomP")
 var imgnoty = ""
 var namenoty = ""
 
+let reloadCount = 0;
 async function btnloginpushed() {
     Tl.style.display = "inline-block"
     console.log("start")
@@ -67,8 +68,18 @@ async function btnloginpushed() {
             Tl.style.display = "none"
         })
         .catch((error) => {
-            console.log("Error. fetch again")
-            shownoty();
+            console.log("Error fetch again "+reloadCount)
+            if(reloadCount <= 3){
+                setTimeout(btnloginpushed(), 1000);
+                reloadCount++;
+            }
+            else{
+                Tl.style.display = "none"
+                let textsstop = document.createElement('span');
+                textsstop.innerText = "Error connot get fetch";
+                document.getElementById("black_content").append(textsstop)
+                console.log("Error fetch, stop ")
+            }
         })
 }
 btnlogin.addEventListener("click",btnloginpushed)
@@ -86,7 +97,7 @@ const btninsertnotyDB = document.getElementById("btninsertnoty")
 const btnCinsertnoty = document.getElementById("btnCinsertnoty")
 const btninsertnoty = document.getElementById("editnoti")
 
-
+reloadCount = 0;
 async function shownoty() {
     let url = "https://db-admin-one.vercel.app/noty"
     fetch(url)
@@ -145,7 +156,14 @@ async function shownoty() {
             })
         })
         .catch(() => {
-            console.dir(error);
+            console.log("Error fetch "+reloadCount)
+            if(reloadCount <= 3){
+                setTimeout(shownoty(), 1000);
+                reloadCount++;
+            }
+            else{
+                console.log("Error fetch, stop ")
+            }
         });
 }
 shownoty();
@@ -220,7 +238,7 @@ btn_comment.addEventListener("click",()=>{
                 boxcommnet.append(boxdate)
             })
         })
-        .catch(() => {
+        .catch((error) => {
             console.dir(error);
         });
 })
