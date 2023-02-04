@@ -33,7 +33,7 @@ var namenoty = ""
 async function btnloginpushed() {
     Tl.style.display = "inline-block"
     console.log("start")
-    let url = (`https://skylab-api-login.herokuapp.com/login`)
+    let url = (`https://db-admin-one.vercel.app/login`)
     let user = {
         "namephone": loginPhone.value,
         "password": loginpassword.value
@@ -88,7 +88,7 @@ const btninsertnoty = document.getElementById("editnoti")
 
 
 async function shownoty() {
-    let url = "https://skylab-api-login.herokuapp.com/noty"
+    let url = "https://db-admin-one.vercel.app/noty"
     fetch(url)
         .then((response) => {
             return response.json();
@@ -153,7 +153,7 @@ async function insertnoty(){
     let textcomP02 = document.getElementById("textcomPIninsertnoty")
     Tl02.style.display = "inline-block"
     console.log("start")
-    let url = (`https://skylab-api-login.herokuapp.com/noty/insert`)
+    let url = (`https://db-admin-one.vercel.app/noty/insert`)
     //date
     const d = new Date();
     const date = String(d.getFullYear())
@@ -200,7 +200,7 @@ popup.style.display = "none"
 const btn_comment = document.getElementById("btncomment")
 const boxcommnet = document.getElementById("comment")
 btn_comment.addEventListener("click",()=>{
-    let url = "https://skylab-api-login.herokuapp.com/comment"
+    let url = "https://db-admin-one.vercel.app/comment"
     fetch(url)
         .then((response) => {
             return response.json();
