@@ -1,5 +1,5 @@
 fetch("https://db-admin-one.vercel.app/")
-    .then((response) => { console.log(response) })
+    .then((response) => { console.log(response) });
 document.title = "SkylabMak";
 //textloading
 const Tl = document.getElementById("textloadingNT")

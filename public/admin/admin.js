@@ -58,12 +58,12 @@ async function btnloginpushed() {
                 hidehtml.style.display = "block"
                 popuplogin.style.display = "none"
             }
-            else if (json.success === "false"){
+            else if (json.success == "false"){
                 
                 textcomP.innerText = "รหัสผิด"
             }
             else{
-                return
+                return textcomP.innerText = "รหัสผิด..."
             }
             Tl.style.display = "none"
         })
