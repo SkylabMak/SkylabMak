@@ -300,10 +300,14 @@ async function createURLimg() {
                 if (reloadCount <= 3) {
                     imgload.style.display = "none"
                     waitdata.innerHTML = "เจอปัญหาในการอัปโหลดรูป กำลังลองใหม่";
-                    createURLimg();
-                    console.error(error)
-                    console.log("เจอปัญหาในการอัปโหลดรูป กำลังลองใหม่")
-                    reloadCount++;
+                    setTimeout(() => {
+                        createURLimg();
+                        console.error(error)
+                        console.log("เจอปัญหาในการอัปโหลดรูป กำลังลองใหม่")
+                        reloadCount++;
+                    }, 1000);
+
+
                 }
                 else {
                     waitdata.innerHTML = "ไม่สามารถอัปโหลดรูปได้ โปรดรีเฟรช หรือลองในภายหลัง หรือแจ้งเจ้าของเว็บไซต์";
