@@ -299,15 +299,13 @@ async function createURLimg() {
                 console.log("Error fetch " + reloadCount)
                 if (reloadCount <= 3) {
                     imgload.style.display = "none"
-                    let waitdata = document.getElementById("waitdata");
                     waitdata.innerHTML = "เจอปัญหาในการอัปโหลดรูป กำลังลองใหม่";
                     createURLimg();
                     console.error(error)
                     console.log("เจอปัญหาในการอัปโหลดรูป กำลังลองใหม่")
+                    reloadCount++;
                 }
                 else {
-                    imgload.style.display = "none"
-                    let waitdata = document.getElementById("waitdata");
                     waitdata.innerHTML = "ไม่สามารถอัปโหลดรูปได้ โปรดรีเฟรช หรือลองในภายหลัง หรือแจ้งเจ้าของเว็บไซต์";
                     console.error(error)
                 }
