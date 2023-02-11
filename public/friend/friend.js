@@ -1,8 +1,10 @@
 document.title = "SM. old friend";
 //prepare api
-fetch("https://skylab-api-img.herokuapp.com/")
+console.log("https://skm-upimg.vercel.app/ status");
+fetch("https://skm-upimg.vercel.app/")
     .then((response) => { console.log(response) })
-fetch("https://skylabmakdb.herokuapp.com/")
+console.log("db-friend.vercel.app/ status");
+fetch("https://db-friend.vercel.app/")
     .then((response) => { console.log(response) })
 
 //storage
@@ -29,7 +31,7 @@ var screenShow = document.getElementById('screenShow')
 var outbox = document.getElementById('outbox')
 function getallusersAndcreateCard() {
     imgload.style.display = "block"
-    let url = ("https://skylabmakdb.herokuapp.com/products/")
+    let url = ("https://db-friend.vercel.app/products/")
     fetch(url)
         .then((response) => {
             return response.json();
@@ -150,7 +152,7 @@ function removeuser() {
     removepopup.style.display = "none";
     console.log(phone_ID)
     let url = `
-    https://skylabmakdb.herokuapp.com/products/delete/${phone_ID}`
+    https://db-friend.vercel.app/products/delete/${phone_ID}`
     //console.log(url)
 
     fetch(url, { method: 'POST', })
@@ -176,7 +178,7 @@ function newuser() {
     let waitdata = document.getElementById("waitdata");
     waitdata.innerHTML = "กำลังส่งข้อมูล";
     let url =
-        `https://skylabmakdb.herokuapp.com/products/insert`
+        `https://db-friend.vercel.app/products/insert`
 
     let user = {
         "phonID": input_Phone.value,
@@ -220,7 +222,7 @@ function updateuser() {
     let waitdata = document.getElementById("waitdata");
     waitdata.innerHTML = "กำลังส่งข้อมูล";
     let url = `
-    https://skylabmakdb.herokuapp.com/products/edit/${phone_ID}`
+    https://db-friend.vercel.app/products/edit/${phone_ID}`
 
     let user = {
         "phonID": input_Phone.value,
@@ -272,7 +274,7 @@ async function createURLimg() {
     else {
         //console.log(imgInput.files)
         console.log(imgInput.files[0])
-        await fetch(`https://skylab-api-img.herokuapp.com/uploadIMG/${phone_ID}`, {
+        await fetch(`https://skm-upimg.vercel.app/uploadIMG/${phone_ID}`, {
             method: 'POST',
             body: formData
         })
@@ -368,7 +370,7 @@ async function fillOld() {
     console.log(phone_ID)
     input_Phone.value = phone_ID;
 
-    let url = (`https://skylabmakdb.herokuapp.com/products/${phone_ID}`)
+    let url = (`https://db-friend.vercel.app/products/${phone_ID}`)
     await fetch(url)
         .then((response) => {
             return response.json();
@@ -442,7 +444,7 @@ async function btnpush() {
     let IDphon = String(PhoneInput.value)
     phone_ID = IDphon;
     console.log('ค่าที่กรอก', IDphon)
-    let url = (`https://skylabmakdb.herokuapp.com/products/${IDphon}`)
+    let url = (`https://db-friend.vercel.app/products/${IDphon}`)
     //console.log('URL', url)
     waitcheck.innerText = "กำลังติดต่อเซิร์ฟเวอร์"
     if (IDphon === "") {
@@ -539,7 +541,7 @@ else{
     sign.style.display = "none";
     imgload.style.display = "block"
     async function secondfunction (){
-        let url = (`https://skylabmakdb.herokuapp.com/products/${String(localStorage.getItem('saveID'))}`)
+        let url = (`https://db-friend.vercel.app/products/${String(localStorage.getItem('saveID'))}`)
         await fetch(url)
         .then((response) => {
             return response.json();
