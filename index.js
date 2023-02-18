@@ -19,6 +19,8 @@ app.use(express.static(path.join(__dirname, '/public/admin')));
 app.use(express.static(path.join(__dirname, '/public/chatbot_line')));
 app.use(express.static(path.join(__dirname, '/public/meteor-shot')));
 app.use(express.static(path.join(__dirname, '/public/42rush')));
+app.use(express.static(path.join(__dirname, '/public/resource')));
+
 
 
 app.get('', function (req, res) {

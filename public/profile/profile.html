@@ -138,40 +138,13 @@
         </div>
         <img class="longimgPF" alt="" src="../pic/long/4.png">
     </div>
-    <footer class="footer">
-        <div class="horizontal_LineT"></div>
-        <script type="module" src="profile.js"></script>
-        <div class="textfooter">
-            <div class="Lfooter">
-                <small>
-                    <span class="textfootername">SkylabMak</span>
-                    &copy; Copyright 2022,SkylabMak All Rights Reserved
-                </small>
-                <br>
-            " thanks for visiting my website <i class="fa-solid fa-face-smile-beam"></i> "
-            <br>
-            Explore web builders :
-            <a class="lingfooter" href="/profile"  rel="noopener noreferrer" target="_blank">
-                my profile</a>
-            
-            </div>
-            <div class="Rfooter">
-                <small> เว็บไซต์นี้พัฒนาด้วย<br> &#8201; 
-                    <i class="fa-solid fa-gear"></i>&#8201;
-                    front end : JavaScript HTML CSS
-                    , <i class="fa-solid fa-gear"></i>&#8201;
-                    backend : Node.js
-                    , <i class="fa-solid fa-gear"></i>&#8201;
-                    Host : vercel
-                    , <i class="fa-solid fa-gear"></i>&#8201;
-                    database : MongoDB Atlas
-                    , <i class="fa-solid fa-gear"></i>&#8201;
-                    Cloud : Cloudinary(เก็บรูปภาพ)
-                    และ <i class="fa-solid fa-gear"></i>&#8201;
-                    รูปภาพ : <img alt="" src="https://uploads-ssl.webflow.com/5eb0e8b7d8a9cf8f178ec240/5eb0e8b7d8a9cf63568ec388_Logo_Canva%402x.png"
-                     class="imgiconfooter"> canva(ส่วนใหญ่)
-                </small>
-            </div>
-        </div>
+    <footer id="footer" class="footer">
+        <script type="module" src="profile.html"></script>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script>
+            $(function () {
+                $("#footer").load("../resource/footer.html");
+            }); 
+        </script>
     </footer>
 </body>
