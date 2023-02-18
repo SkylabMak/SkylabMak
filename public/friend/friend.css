@@ -1,66 +1,82 @@
-.supermain_box{
+.supermain_box {
     min-height: 500px;
 }
-.main_boxfriend1{
+
+.main_boxfriend1 {
     max-width: 1000px;
     margin: auto;
     height: auto;
     padding-top: 5px;
     padding-bottom: 10px;
 }
-.main_boxfriend2{
+
+.main_boxfriend2 {
     margin: auto;
     height: auto;
     padding-top: 5px;
     padding-bottom: 10px;
 }
-.leaveLeft{
-    padding : auto;
+
+.leaveLeft {
+    padding: auto;
 }
 
+.rotate90deg {
+    color:white;
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+    /*transform-origin: 50% 100%;*/
+    transform: translate(60%, 50%) rotate(90deg);
+}
 
-.boxTop{
+.boxTop {
     max-width: 1000px;
     margin: auto;
-    border-radius:15px;
-    margin: 20px ;
+    border-radius: 15px;
+    margin: 20px;
     vertical-align: middle;
 }
-.screenShow{
+
+.screenShow {
     position: relative;
     max-width: 1300px;
     min-height: 50px;
     height: auto;
     margin: auto;
     background-color: #4E2849;
-    border-radius:15px;
+    border-radius: 15px;
     padding: 10px;
 }
-.outbox{
+
+.outbox {
     text-align: center;
 }
-.card{
+
+.card {
     vertical-align: middle;
     display: inline-block;
     width: 200px;
     height: auto;
     background-color: #544E9C;
-    border-radius:15px;
+    border-radius: 15px;
     margin: 10px;
     text-align: center;
     padding: 10px;
 }
-.personimg{
+
+.personimg {
     margin: 10px;
-    max-width:100px;
-    border-radius:15px;
+    max-width: 100px;
+    border-radius: 15px;
 }
-.buttonRefresh{
+
+.buttonRefresh {
     padding: 5px;
-    position:absolute;
+    position: absolute;
     top: 10px;
     right: 10px;
-    border-radius:20px;
+    border-radius: 20px;
     border: none;
     cursor: pointer;
     background-color: #AF80F9;
@@ -68,21 +84,24 @@
     font-weight: bold;
     transition: transform 0.15s ease-out,
 }
-.buttonRefresh:hover{
+
+.buttonRefresh:hover {
     transform: scale(1.025, 1.025);
 }
-.white_content{
+
+.white_content {
     color: black;
     position: relative;
     border: none;
-    background-color:white;
-    border-radius:5px;
+    background-color: white;
+    border-radius: 5px;
     padding: 5px;
     margin: 5px;
 }
 
 .btnTopfriend {
-    vertical-align: middle;/*ตรงกลาง*/
+    vertical-align: middle;
+    /*ตรงกลาง*/
     text-align: center;
     color: black;
     background-color: #F7EB89;
@@ -96,13 +115,15 @@
     border: none;
     transition: transform 0.15s ease-out, background-color 0.25s ease-out;
 }
-.btnTopfriend:hover{
+
+.btnTopfriend:hover {
     background-color: #FAF2B4;
     transform: scale(1.025, 1.025);
 }
-.preview{
+
+.preview {
     border-radius: 10px;
-    margin:10px;
+    margin: 10px;
     width: 100px;
     height: 100px;
     border-radius: 10px;
@@ -111,9 +132,11 @@
     background-size: cover;
     display: inline-block;
 }
-.vertical-alignMid{
+
+.vertical-alignMid {
     vertical-align: middle;
 }
-.nondisplay{
-    display:none;
+
+.nondisplay {
+    display: none;
 }
