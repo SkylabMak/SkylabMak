@@ -1,4 +1,5 @@
-fetch("https://db-admin-one.vercel.app/")
+const urlAdmin = "https://skm-db-admn.onrender.com/"
+fetch(urlAdmin)
     .then((response) => { console.log(response) });
 document.title = "SkylabMak";
 //textloading
@@ -24,7 +25,7 @@ let reloadCount = 0;
 const boxnoty = document.getElementById("boxnoty")
 async function shownoty() {
     Tl.style.display = "inline-block"
-    let url = "https://db-admin-one.vercel.app/noty"
+    let url = `${urlAdmin}noty`
     fetch(url)
         .then((response) => {
             return response.json();
@@ -112,7 +113,7 @@ btnCcomment.addEventListener("click", () => {
 })
 async function sendCM() {
     Tlcomments.style.display = "inline-block"
-    var url = "https://db-admin-one.vercel.app/comment/insert"
+    var url = `${urlAdmin}comment/insert`
     var bodycomment = {
         "comment" : input_comment.value
     }

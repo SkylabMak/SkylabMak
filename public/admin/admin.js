@@ -1,3 +1,4 @@
+const urlAdmin = "https://skm-db-admn.onrender.com/"
 //hide html
 const hidehtml = document.getElementById("hidehtml")
 //textloading
@@ -34,7 +35,7 @@ let reloadCount = 0;
 async function btnloginpushed() {
     Tl.style.display = "inline-block"
     console.log("start")
-    let url = (`https://db-admin-one.vercel.app/login`)
+    let url = (`${urlAdmin}login`)
     let user = {
         "namephone": loginPhone.value,
         "password": loginpassword.value
@@ -99,7 +100,7 @@ const btninsertnoty = document.getElementById("editnoti")
 
 reloadCount = 0;
 async function shownoty() {
-    let url = "https://db-admin-one.vercel.app/noty"
+    let url = `${urlAdmin}noty`
     fetch(url)
         .then((response) => {
             return response.json();
@@ -171,7 +172,7 @@ async function insertnoty(){
     let textcomP02 = document.getElementById("textcomPIninsertnoty")
     Tl02.style.display = "inline-block"
     console.log("start")
-    let url = (`https://db-admin-one.vercel.app/noty/insert`)
+    let url = (`${urlAdmin}noty/insert`)
     //date
     const d = new Date();
     const date = String(d.getFullYear())
@@ -218,7 +219,7 @@ popup.style.display = "none"
 const btn_comment = document.getElementById("btncomment")
 const boxcommnet = document.getElementById("comment")
 btn_comment.addEventListener("click",()=>{
-    let url = "https://db-admin-one.vercel.app/comment"
+    let url = `${urlAdmin}comment`
     fetch(url)
         .then((response) => {
             return response.json();
