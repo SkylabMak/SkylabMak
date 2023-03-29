@@ -92,7 +92,7 @@ async function shownoty() {
             else{
                 Tl.style.display = "none"
                 let textnoty = document.createElement('span');
-                textnoty.innerText = "Error connot get notify \n please refresh web page";
+                textnoty.innerText = "Error connot get notify \n please refresh web page or see next time";
                 boxnoty.append(textnoty)
                 console.log("Error fetch, stop ")
             }
