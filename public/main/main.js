@@ -24,79 +24,91 @@ Ftextloading(Tlcomments);
 let reloadCount = 0;
 const boxnoty = document.getElementById("boxnoty")
 async function shownoty() {
-    Tl.style.display = "inline-block"
-    let url = `${urlAdmin}noty`
-    fetch(url)
+    const timeOut_duration = 5000;
+    
+    Tl.style.display = "inline-block";
+    let url = `${urlAdmin}noty`;
+
+    async function fetchWithTimeout(notiurl, options = {}) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeOut_duration);
+        options.signal = controller.signal;
+
+        try {
+            const response = await fetch(notiurl, options);
+            clearTimeout(timeoutId);
+            return response;
+        } catch (error) {
+            clearTimeout(timeoutId);
+            throw error;
+        }
+    }
+
+    fetchWithTimeout(url)
         .then((response) => {
             return response.json();
         })
         .then((resJson) => {
-            console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson)
+            console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", resJson);
             var sortdata = [...resJson].sort((data1, data2) => {
                 if (Number(data1.date) > Number(data2.date)) {
-                    return -1 //ซ้ายมาก่อน
+                    return -1; //ซ้ายมาก่อน
+                } else if (Number(data1.date) < Number(data2.date)) {
+                    return 1; //สลับ ขวามาก่อน
+                } else {
+                    return 0;
                 }
-                else if (Number(data1.date) < Number(data2.date)) {
-                    return 1 //สลับ ขวามาก่อน
-                }
-                else {
-                    return 0
-                }
-
-            })
-            return sortdata
+            });
+            return sortdata;
         })
         .then((Groupdatanoty) => {
-            console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", Groupdatanoty)
+            console.log("ค่าตอบกลับ ที่ได้จากเซิฟ", Groupdatanoty);
             Groupdatanoty.forEach((datanoty) => {
                 //box
-                let mainbox = document.createElement('div')
-                mainbox.classList.add('boxNoti')
+                let mainbox = document.createElement('div');
+                mainbox.classList.add('boxNoti');
                 let boxavatar = document.createElement('div');
                 boxavatar.classList.add('Lnoti');
                 let boxcenter = document.createElement('div');
-                boxcenter.classList.add('Cnoti')
+                boxcenter.classList.add('Cnoti');
                 let boxdate = document.createElement('div');
-                boxdate.classList.add('Rnoti')
+                boxdate.classList.add('Rnoti');
 
                 //img
                 let img = document.createElement('img');
                 img.classList.add('miniimg');
-                img.src = datanoty.pic
+                img.src = datanoty.pic;
 
                 //text
                 let textnoty = document.createElement('span');
                 textnoty.innerText = datanoty.text;
                 //-----
                 let textdate = document.createElement('span');
-                let date = datanoty.date
-                let dateSlice = date.slice(6, 8) + "/" + date.slice(4, 6) + "/" + date.slice(0, 4)
+                let date = datanoty.date;
+                let dateSlice = date.slice(6, 8) + "/" + date.slice(4, 6) + "/" + date.slice(0, 4);
                 textdate.innerHTML = "อัปเดตโดย " + datanoty.name + "<br>" + " เมื่อ " + dateSlice;
 
-
                 //mix 
-                boxavatar.append(img)
-                boxcenter.append(textnoty)
-                boxdate.append(textdate)
-                mainbox.append(boxavatar, boxcenter, boxdate)
-                boxnoty.append(mainbox)
-            })
-            Tl.style.display = "none"
+                boxavatar.append(img);
+                boxcenter.append(textnoty);
+                boxdate.append(textdate);
+                mainbox.append(boxavatar, boxcenter, boxdate);
+                boxnoty.append(mainbox);
+            });
+            Tl.style.display = "none";
         })
-        .catch(() => {
-            console.log("Error fetch "+reloadCount)
-            if(reloadCount <= 3){
-                setTimeout(shownoty(), 1000);
+        .catch((error) => {
+            console.log("Error fetch " + reloadCount, error);
+            if (reloadCount < 2) {
+                setTimeout(() => shownoty(), 1000);
                 reloadCount++;
-            }
-            else{
-                Tl.style.display = "none"
+            } else {
+                Tl.style.display = "none";
                 let textnoty = document.createElement('span');
-                textnoty.innerText = "Error connot get notify \n please refresh web page or see next time";
-                boxnoty.append(textnoty)
-                console.log("Error fetch, stop ")
+                textnoty.innerText = "Error cannot get notify may be stop service \n please refresh web page or see next time";
+                boxnoty.append(textnoty);
+                console.log("Error fetch, stop ");
             }
-            
         });
 }
 shownoty();
