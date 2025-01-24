@@ -228,6 +228,15 @@ input:focus {
     height:100%;
     transition: transform 0.2s;
 }
+.imgcardTmp{
+    background-image: url("../pic/tmpWebProfile.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%; 
+    height:100%;
+    transition: transform 0.2s;
+}
 .textcard{
     position: absolute;
     top: 60%;
@@ -238,6 +247,9 @@ input:focus {
 }
 .cardWork:hover .imgcard1{
     transform: scale(1.5);
+}
+.cardWork:hover .imgcardTmp{
+    transform: scale(1.2);
 }
 .cardWork:hover .textcard{
     background-color:#fffffed4;
